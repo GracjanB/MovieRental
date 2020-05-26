@@ -125,6 +125,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Models\RegisterFormModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
@@ -184,7 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EventModels\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseAccess\DatabaseAccess.csproj">

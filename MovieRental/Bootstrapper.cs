@@ -12,6 +12,8 @@ using System.Windows;
 using AutoMapper;
 using DatabaseAccess.Entities;
 using MovieRental.Models;
+using MovieRental.Helpers;
+using System.Windows.Controls;
 
 namespace MovieRental
 {
@@ -22,6 +24,11 @@ namespace MovieRental
         public Bootstrapper()
         {
             Initialize();
+
+            ConventionManager.AddElementConvention<PasswordBox>(
+            PasswordBoxHelper.BoundPasswordProperty,
+            "Password",
+            "PasswordChanged");
         }
 
         protected override void Configure()
