@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using DatabaseAccess.Repositories;
 using MovieRental.Services;
 using MovieRental.User;
 using MovieRental.ViewModels;
@@ -8,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using AutoMapper;
+using DatabaseAccess.Entities;
+using MovieRental.Models;
 
 namespace MovieRental
 {
@@ -24,12 +28,21 @@ namespace MovieRental
         {
             _container.Instance(_container);
 
+            MapperConfiguration mapperConfig = new MapperConfiguration(config =>
+            {
+                config.CreateMap<Account, UserModel>();
+            });
+
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<IAuthenticationService, AuthenticationService>()
                 .Singleton<IRegisterService, RegisterService>()
-                .Singleton<ILoggedInUser, LoggedInUser>();
+                .Singleton<ILoggedInUser, LoggedInUser>()
+                .Singleton<IAccountRepository, AccountRepository>();
+
+            _container
+                .RegisterInstance(typeof(IMapper), "automapper", mapperConfig.CreateMapper());
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

@@ -1,4 +1,5 @@
 ﻿using DatabaseAccess.Entities;
+using DatabaseAccess.Repositories;
 using MovieRental.Models;
 using System;
 using System.Collections.Generic;
@@ -11,38 +12,34 @@ namespace MovieRental.Services
 {
     public class RegisterService : IRegisterService
     {
+        private readonly IAccountRepository _accountRepo;
 
-        public bool Register(RegisterFormModel registerForm)
+        public RegisterService(IAccountRepository accountRepository)
+        {
+            _accountRepo = accountRepository;
+        }
+
+
+        public async Task<bool> Register(RegisterFormModel registerForm)
         {
             bool output = false;
 
             var account = createAccountObject(registerForm);
-
-            if(account != null)
-            {
-                // TODO: Register account in database
-            }
+            output = await _accountRepo.CreateAccount(account);
 
             return output;
         }
 
         private Account createAccountObject(RegisterFormModel registerForm)
         {
-            Account account = null;
-
-            var user = new UserProfile
+            var account = new Account
             {
                 Username = registerForm.Username,
                 Email = registerForm.Email,
                 Password = CalculateHash(registerForm.Password, registerForm.Username),
-                IsActive = false
-            };
-
-            account = new Account
-            {
+                IsActive = false,
                 FirstName = registerForm.FirstName,
                 LastName = registerForm.LastName,
-                User = user,
                 Balance = 0
             };
 

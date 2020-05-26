@@ -1,4 +1,7 @@
-﻿using MovieRental.Services;
+﻿using AutoMapper;
+using DatabaseAccess.Entities;
+using MovieRental.Models;
+using MovieRental.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,46 +12,39 @@ namespace MovieRental.User
 {
     public class LoggedInUser : ILoggedInUser
     {
-        private IAuthenticationService _authenticationService { get; set; }
+        private readonly IAuthenticationService _authService;
 
-        public int UserId { get; set; }
+        private readonly IMapper _mapper;
 
-        public int AccountId { get; set; }
-
-        public string Username { get; set; }
-
-        public string Email { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
+        public UserModel User { get; private set; }
 
 
-        public LoggedInUser(IAuthenticationService authenticationService)
+        public LoggedInUser(IAuthenticationService authService, IMapper mapper)
         {
-            _authenticationService = authenticationService;
+            _authService = authService;
+            _mapper = mapper;
         }
 
-        public bool Login(string username, string password)
+        public async Task<bool> Login(string username, string password)
         {
             bool output = false;
+            Account account = null;
 
-            // TODO: Make login function
-            var account = _authenticationService.AuthenticateUser(username, password);
+            try
+            {
+                account = await _authService.AuthenticateUser(username, password);
+            }
+            catch(UnauthorizedAccessException ex)
+            {
+                throw new UnauthorizedAccessException(ex.Message);
+            }
 
             if (account != null)
             {
-                this.UserId = account.User.Id;
-                this.AccountId = account.Id;
-                this.Username = account.User.Username;
-                this.Email = account.User.Email;
-                this.FirstName = account.FirstName;
-                this.LastName = account.LastName;
+                User = _mapper.Map<UserModel>(account);
 
                 output = true;
             }
-            else
-                throw new UnauthorizedAccessException();
 
             return output;
         }

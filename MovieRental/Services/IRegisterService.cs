@@ -1,9 +1,10 @@
 ﻿using MovieRental.Models;
+using System.Threading.Tasks;
 
 namespace MovieRental.Services
 {
     public interface IRegisterService
     {
-        bool Register(RegisterFormModel registerForm);
+        Task<bool> Register(RegisterFormModel registerForm);
     }
 }

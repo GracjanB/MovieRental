@@ -5,23 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using DatabaseAccess.Entities;
+using DatabaseAccess.Repositories;
 
 namespace MovieRental.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
+        private readonly IAccountRepository _accountRepo;
 
-        public Account AuthenticateUser(string username, string clearTextPassword)
+        public AuthenticationService(IAccountRepository accountRepository)
+        {
+            _accountRepo = accountRepository;
+        }
+
+        public async Task<Account> AuthenticateUser(string username, string clearTextPassword)
         {
             Account account = null;
             
             var hashedPassword = CalculateHash(clearTextPassword, username);
 
-            // TODO: Connect with database and search user by given name
+            account = await _accountRepo.GetAccount(username);
 
-
-
-            return account;
+            if (account != null)
+            {
+                if (account.Password == hashedPassword)
+                    return account; // TODO: Mapper
+                else
+                    throw new UnauthorizedAccessException("Password doesn't match.");
+            }
+            else
+                throw new UnauthorizedAccessException("Username not found.");
         }
 
         private string CalculateHash(string clearTextPassword, string salt)

@@ -1,8 +1,11 @@
-﻿namespace MovieRental.User
+﻿using System.Threading.Tasks;
+
+namespace MovieRental.User
 {
     public interface ILoggedInUser
     {
-        bool Login(string username, string password);
+        Task<bool> Login(string username, string password);
+
         bool Logout();
     }
 }
