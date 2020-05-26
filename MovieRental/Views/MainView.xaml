@@ -7,7 +7,7 @@
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:MovieRental.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="600" Width="1080" WindowStyle="None" ResizeMode="NoResize">
+        Title="MainView" Height="600" Width="1080" WindowStyle="None" ResizeMode="NoResize" MouseLeftButtonDown="WindowMouseLeftButtonDown">
     <Window.Resources>
 
         <Storyboard x:Key="OpenMenu">
@@ -54,6 +54,14 @@
         </EventTrigger>
     </Window.Triggers>
 
+    <x:Code>
+        <![CDATA[            
+        private void WindowMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+    ]]>
+    </x:Code>
 
     <Grid>
         <DockPanel Height="50" Background="#01579B" VerticalAlignment="Top" >
