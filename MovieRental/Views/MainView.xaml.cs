@@ -23,5 +23,15 @@ namespace MovieRental.Views
         {
             InitializeComponent();
         }
+
+        private void ButtonOpen_Click(object sender, RoutedEventArgs e)
+        {
+            GridBackground.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            GridBackground.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -12,36 +12,33 @@ using System.Windows;
 
 namespace MovieRental.ViewModels
 {
-    public class MainViewModel : Screen
+    public class MainViewModel : Conductor<object>
     {
-        private readonly IRegisterService _registerService;
+        private readonly SimpleContainer _container;
 
-        private readonly ILoggedInUser _userService;
-
-        public MainViewModel(IRegisterService registerService, ILoggedInUser userService)
+        public MainViewModel(SimpleContainer container)
         {
-            _registerService = registerService;
-            _userService = userService;
+            _container = container;
         }
 
-        public async Task Login()
+        public void MovieRentalLibraryShow()
         {
-            //var registerForm = new RegisterFormModel()
-            //{
-            //    Username = "testUsername",
-            //    Email = "test@test.com",
-            //    Password = "passwordtest",
-            //    ConfirmPassword = "passwordtest",
-            //    FirstName = "testName",
-            //    LastName = "testLast"
-            //};
+            // TODO: Show Movie Rental Library
+        }
 
-            //var result = await _userService.Login("testUsername", "passwordtest");
+        public void UserMovieLibraryShow()
+        {
+            // TODO: Show User Movie Library
+        }
 
-            //if (result)
-            //    MessageBox.Show("HURA");
-            //else
-            //    MessageBox.Show("NOPE");
+        public void AccountShow()
+        {
+            // TODO: Show Account Screen
+        }
+
+        public void GitHubRepositoryRedirect()
+        {
+            // TODO: Open GitHub repo in browser
         }
     }
 }
