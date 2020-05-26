@@ -24,8 +24,16 @@ namespace DatabaseAccess.Entities
 
         public decimal Balance { get; set; }
 
+        public Role Role { get; set; }
+
         public ICollection<Review> Reviews { get; set; }
 
         public ICollection<VideoRental> VideoRentals { get; set; }
+    }
+
+    public enum Role
+    {
+        USER,
+        ADMINISTRATOR
     }
 }

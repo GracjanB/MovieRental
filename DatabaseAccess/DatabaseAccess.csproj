@@ -85,6 +85,10 @@
     <Compile Include="Migrations\202005261041211_AddedStatusColumnToVideoRentalTable.designer.cs">
       <DependentUpon>202005261041211_AddedStatusColumnToVideoRentalTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005261222367_AddedRoleColumnToAccountTable.cs" />
+    <Compile Include="Migrations\202005261222367_AddedRoleColumnToAccountTable.designer.cs">
+      <DependentUpon>202005261222367_AddedRoleColumnToAccountTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\MovieRentalModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005261041211_AddedStatusColumnToVideoRentalTable.resx">
       <DependentUpon>202005261041211_AddedStatusColumnToVideoRentalTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005261222367_AddedRoleColumnToAccountTable.resx">
+      <DependentUpon>202005261222367_AddedRoleColumnToAccountTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
