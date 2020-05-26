@@ -12,43 +12,60 @@ namespace DatabaseAccess.EntitiesConfiguration
     {
         public VideoConfiguration()
         {
-            HasKey(c => c.Id);
+            // Primary Key
+            HasKey(x => x.Id);
 
-            Property(c => c.Title)
-                .IsRequired()
+            Property(x => x.Title)
                 .HasColumnName("Title")
-                .HasColumnType("nvarchar")
-                .HasColumnOrder(2)
-                .HasMaxLength(128);
-
-            Property(c => c.Category)
-                .IsOptional()
-                .HasColumnName("Category")
-                .HasColumnType("nvarchar")
-                .HasColumnOrder(3)
+                .HasColumnType("NVARCHAR")
+                .IsRequired()
                 .HasMaxLength(64);
 
-            Property(c => c.ProductionYear)
-                .IsOptional()
+            Property(x => x.Category)
+                .HasColumnName("Category")
+                .IsOptional();
+
+            Property(x => x.ProductionYear)
                 .HasColumnName("ProductionYear")
-                .HasColumnType("int")
-                .HasColumnOrder(4);
+                .HasColumnType("INT")
+                .IsOptional();
 
-            Property(c => c.Description)
-                .IsOptional()
+            Property(x => x.Description)
                 .HasColumnName("Description")
-                .HasColumnType("ntext")
-                .HasColumnOrder(5);
+                .HasColumnType("NVARCHAR")
+                .IsOptional()
+                .IsMaxLength();
 
-            Property(c => c.PricePerDay)
-                .IsRequired()
+            Property(x => x.Country)
+                .HasColumnName("Country")
+                .HasColumnType("NVARCHAR")
+                .IsOptional()
+                .HasMaxLength(64);
+
+            Property(x => x.Director)
+                .HasColumnName("Director")
+                .HasColumnType("NVARCHAR")
+                .IsOptional()
+                .HasMaxLength(64);
+
+            Property(x => x.Scenario)
+                .HasColumnName("Scenario")
+                .HasColumnType("NVARCHAR")
+                .IsOptional()
+                .HasMaxLength(64);
+
+            Property(x => x.PricePerDay)
                 .HasColumnName("PricePerDay")
-                .HasColumnType("smallmoney")
-                .HasPrecision(10, 2);
+                .HasColumnType("SMALLMONEY")
+                .HasPrecision(6, 2);
 
-            HasMany(c => c.VideoRentals)
-                .WithRequired(c => c.Video)
-                .HasForeignKey(c => c.VideoId);
+            HasMany(x => x.Reviews)
+                .WithRequired(x => x.Video)
+                .HasForeignKey(x => x.VideoId);
+
+            HasMany(x => x.VideoRentals)
+                .WithRequired(x => x.Video)
+                .HasForeignKey(x => x.VideoId);
         }
     }
 }

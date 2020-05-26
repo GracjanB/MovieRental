@@ -12,32 +12,28 @@ namespace DatabaseAccess.EntitiesConfiguration
     {
         public VideoRentalConfiguration()
         {
-            HasKey(c => c.Id);
+            // Primary Key
+            HasKey(x => x.Id);
 
-            Property(c => c.DateCreated)
-                .IsRequired()
+            Property(x => x.DateCreated)
                 .HasColumnName("DateCreated")
-                .HasColumnOrder(2)
-                .HasColumnType("smalldatetime");
+                .HasColumnType("DATETIME2")
+                .IsRequired();
 
-            Property(c => c.DateStart)
-                .IsRequired()
+            Property(x => x.DateStart)
                 .HasColumnName("DateStart")
-                .HasColumnOrder(3)
-                .HasColumnType("smalldatetime");
+                .HasColumnType("DATETIME2")
+                .IsRequired();
 
-            Property(c => c.DateEnd)
-                .IsRequired()
+            Property(x => x.DateEnd)
                 .HasColumnName("DateEnd")
-                .HasColumnOrder(4)
-                .HasColumnType("smalldatetime");
+                .HasColumnType("DATETIME2")
+                .IsRequired();
 
-            Property(c => c.Price)
-                .IsRequired()
+            Property(x => x.Price)
                 .HasColumnName("Price")
-                .HasColumnOrder(5)
-                .HasColumnType("smallmoney")
-                .HasPrecision(10, 2);
+                .HasColumnType("SMALLMONEY")
+                .HasPrecision(6, 2);
         }
     }
 }

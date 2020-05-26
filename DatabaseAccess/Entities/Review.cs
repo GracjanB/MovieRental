@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace DatabaseAccess.Entities
 {
-    public class VideoRental
+    public class Review
     {
         public int Id { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public string Description { get; set; }
 
-        public DateTime DateStart { get; set; }
-
-        public DateTime DateEnd { get; set; }
-
-        public Status Status { get; set; }
-
-        public decimal Price { get; set; }
+        public int Rating { get; set; }
 
         public int VideoId { get; set; }
 
@@ -27,12 +21,5 @@ namespace DatabaseAccess.Entities
         public int AccountId { get; set; }
 
         public Account Account { get; set; }
-    }
-
-    public enum Status
-    {
-        CREATED,
-        AVAILABLE,
-        ENDED
     }
 }

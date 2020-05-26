@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedRelationshipBetweenVideoRentalAndAccount : DbMigration
+    public partial class AddedRelationshipBetweenAccountAndVideoRentalTables : DbMigration
     {
         public override void Up()
         {

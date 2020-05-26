@@ -9,11 +9,9 @@ namespace DatabaseAccess.Model
     public class MovieRentalModel : DbContext
     {
         public MovieRentalModel()
-            : base(nameOrConnectionString: "MovieRentalModel")
+            : base(nameOrConnectionString: "MovieRentalDB")
         {
         }
-
-        public DbSet<UserProfile> Users { get; set; }
 
         public DbSet<Account> Accounts { get; set; }
 
@@ -21,12 +19,15 @@ namespace DatabaseAccess.Model
 
         public DbSet<VideoRental> VideoRentals { get; set; }
 
+        public DbSet<Review> Reviews { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new ReviewConfiguration());
             modelBuilder.Configurations.Add(new AccountConfiguration());
             modelBuilder.Configurations.Add(new VideoConfiguration());
             modelBuilder.Configurations.Add(new VideoRentalConfiguration());
+
             base.OnModelCreating(modelBuilder); 
         }
     }

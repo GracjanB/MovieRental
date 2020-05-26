@@ -12,35 +12,51 @@ namespace DatabaseAccess.EntitiesConfiguration
     {
         public AccountConfiguration()
         {
-            HasKey(c => c.Id);
+            // Primary Key
+            HasKey(x => x.Id);
 
-            Property(c => c.FirstName)
+            Property(x => x.Username)
+                .HasColumnName("Username")
+                .HasColumnType("NVARCHAR")
                 .IsRequired()
-                .HasColumnName("FirstName")
-                .HasColumnType("varchar")
-                .HasColumnOrder(2)
                 .HasMaxLength(64);
 
-            Property(c => c.LastName)
+            Property(x => x.Email)
+                .HasColumnName("Email")
+                .HasColumnType("NVARCHAR")
                 .IsRequired()
-                .HasColumnName("LastName")
-                .HasColumnType("varchar")
-                .HasColumnOrder(3)
                 .HasMaxLength(64);
 
-            Property(c => c.Balance)
-                .IsOptional()
-                .HasColumnName("Balance")
-                .HasColumnType("smallmoney")
-                .HasColumnOrder(4)
-                .HasPrecision(10, 2);
+            Property(x => x.Password)
+                .HasColumnName("Password")
+                .HasColumnType("NVARCHAR")
+                .IsRequired()
+                .HasMaxLength(256);
 
-            HasRequired(c => c.User)
-                .WithRequiredPrincipal(c => c.Account);
+            Property(x => x.FirstName)
+                .HasColumnName("Firstname")
+                .HasColumnType("NVARCHAR")
+                .IsRequired()
+                .HasMaxLength(64);
 
-            HasMany(c => c.VideoRentals)
-                .WithRequired(c => c.Account)
-                .HasForeignKey(c => c.AccountId);
+            Property(x => x.LastName)
+                .HasColumnName("Lastname")
+                .HasColumnType("NVARCHAR")
+                .IsRequired()
+                .HasMaxLength(64);
+
+            Property(x => x.IsActive)
+                .HasColumnName("IsActive")
+                .HasColumnType("BIT")
+                .IsOptional();
+
+            HasMany(x => x.Reviews)
+                .WithRequired(x => x.Account)
+                .HasForeignKey(x => x.AccountId);
+
+            HasMany(x => x.VideoRentals)
+                .WithRequired(x => x.Account)
+                .HasForeignKey(x => x.AccountId);
         }
     }
 }

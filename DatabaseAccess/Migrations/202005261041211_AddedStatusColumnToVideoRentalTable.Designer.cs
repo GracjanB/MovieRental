@@ -6,14 +6,14 @@ namespace DatabaseAccess.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class AddedRelationshipBetweenVideoRentalAndAccount : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
+    public sealed partial class AddedStatusColumnToVideoRentalTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedRelationshipBetweenVideoRentalAndAccount));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedStatusColumnToVideoRentalTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005071307532_AddedRelationshipBetweenVideoRentalAndAccount"; }
+            get { return "202005261041211_AddedStatusColumnToVideoRentalTable"; }
         }
         
         string IMigrationMetadata.Source

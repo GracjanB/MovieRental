@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -54,59 +54,66 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntitiesConfiguration\AccountConfiguration.cs" />
-    <Compile Include="EntitiesConfiguration\UserConfiguration.cs" />
+    <Compile Include="EntitiesConfiguration\ReviewConfiguration.cs" />
     <Compile Include="EntitiesConfiguration\VideoConfiguration.cs" />
     <Compile Include="EntitiesConfiguration\VideoRentalConfiguration.cs" />
     <Compile Include="Entities\Account.cs" />
-    <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Entities\Review.cs" />
     <Compile Include="Entities\Video.cs" />
     <Compile Include="Entities\VideoRental.cs" />
-    <Compile Include="Migrations\202005071223501_InitialModel.cs" />
-    <Compile Include="Migrations\202005071223501_InitialModel.designer.cs">
-      <DependentUpon>202005071223501_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202005260957230_InitialModel.cs" />
+    <Compile Include="Migrations\202005260957230_InitialModel.designer.cs">
+      <DependentUpon>202005260957230_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005071237421_AddedRelationshipBetweenUserAndAccount.cs" />
-    <Compile Include="Migrations\202005071237421_AddedRelationshipBetweenUserAndAccount.designer.cs">
-      <DependentUpon>202005071237421_AddedRelationshipBetweenUserAndAccount.cs</DependentUpon>
+    <Compile Include="Migrations\202005261002434_AddedRelationshipBetweenVideoAndReviewTables.cs" />
+    <Compile Include="Migrations\202005261002434_AddedRelationshipBetweenVideoAndReviewTables.designer.cs">
+      <DependentUpon>202005261002434_AddedRelationshipBetweenVideoAndReviewTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005071303418_AddedRelationshipBetweenVideoAndVideoRental.cs" />
-    <Compile Include="Migrations\202005071303418_AddedRelationshipBetweenVideoAndVideoRental.designer.cs">
-      <DependentUpon>202005071303418_AddedRelationshipBetweenVideoAndVideoRental.cs</DependentUpon>
+    <Compile Include="Migrations\202005261032220_AddedRelationshipBetweenVideoAndVideoRentalTable.cs" />
+    <Compile Include="Migrations\202005261032220_AddedRelationshipBetweenVideoAndVideoRentalTable.designer.cs">
+      <DependentUpon>202005261032220_AddedRelationshipBetweenVideoAndVideoRentalTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005071307532_AddedRelationshipBetweenVideoRentalAndAccount.cs" />
-    <Compile Include="Migrations\202005071307532_AddedRelationshipBetweenVideoRentalAndAccount.designer.cs">
-      <DependentUpon>202005071307532_AddedRelationshipBetweenVideoRentalAndAccount.cs</DependentUpon>
+    <Compile Include="Migrations\202005261035127_AddedRelationshipBetweenAccountAndReviewTable.cs" />
+    <Compile Include="Migrations\202005261035127_AddedRelationshipBetweenAccountAndReviewTable.designer.cs">
+      <DependentUpon>202005261035127_AddedRelationshipBetweenAccountAndReviewTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005071453010_ChangedUserEntityName.cs" />
-    <Compile Include="Migrations\202005071453010_ChangedUserEntityName.designer.cs">
-      <DependentUpon>202005071453010_ChangedUserEntityName.cs</DependentUpon>
+    <Compile Include="Migrations\202005261037537_AddedRelationshipBetweenAccountAndVideoRentalTables.cs" />
+    <Compile Include="Migrations\202005261037537_AddedRelationshipBetweenAccountAndVideoRentalTables.designer.cs">
+      <DependentUpon>202005261037537_AddedRelationshipBetweenAccountAndVideoRentalTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005261041211_AddedStatusColumnToVideoRentalTable.cs" />
+    <Compile Include="Migrations\202005261041211_AddedStatusColumnToVideoRentalTable.designer.cs">
+      <DependentUpon>202005261041211_AddedStatusColumnToVideoRentalTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\MovieRentalModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\IAccountRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DataAPI\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005071223501_InitialModel.resx">
-      <DependentUpon>202005071223501_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005260957230_InitialModel.resx">
+      <DependentUpon>202005260957230_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005071237421_AddedRelationshipBetweenUserAndAccount.resx">
-      <DependentUpon>202005071237421_AddedRelationshipBetweenUserAndAccount.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005261002434_AddedRelationshipBetweenVideoAndReviewTables.resx">
+      <DependentUpon>202005261002434_AddedRelationshipBetweenVideoAndReviewTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005071303418_AddedRelationshipBetweenVideoAndVideoRental.resx">
-      <DependentUpon>202005071303418_AddedRelationshipBetweenVideoAndVideoRental.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005261032220_AddedRelationshipBetweenVideoAndVideoRentalTable.resx">
+      <DependentUpon>202005261032220_AddedRelationshipBetweenVideoAndVideoRentalTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005071307532_AddedRelationshipBetweenVideoRentalAndAccount.resx">
-      <DependentUpon>202005071307532_AddedRelationshipBetweenVideoRentalAndAccount.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005261035127_AddedRelationshipBetweenAccountAndReviewTable.resx">
+      <DependentUpon>202005261035127_AddedRelationshipBetweenAccountAndReviewTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005071453010_ChangedUserEntityName.resx">
-      <DependentUpon>202005071453010_ChangedUserEntityName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005261037537_AddedRelationshipBetweenAccountAndVideoRentalTables.resx">
+      <DependentUpon>202005261037537_AddedRelationshipBetweenAccountAndVideoRentalTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005261041211_AddedStatusColumnToVideoRentalTable.resx">
+      <DependentUpon>202005261041211_AddedStatusColumnToVideoRentalTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -114,8 +121,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

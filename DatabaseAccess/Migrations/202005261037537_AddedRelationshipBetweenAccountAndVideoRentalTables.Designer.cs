@@ -6,14 +6,14 @@ namespace DatabaseAccess.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class ChangedUserEntityName : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
+    public sealed partial class AddedRelationshipBetweenAccountAndVideoRentalTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedUserEntityName));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedRelationshipBetweenAccountAndVideoRentalTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005071453010_ChangedUserEntityName"; }
+            get { return "202005261037537_AddedRelationshipBetweenAccountAndVideoRentalTables"; }
         }
         
         string IMigrationMetadata.Source
