@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="LoginView" Height="480" Width="400" 
         WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="NoResize"
-        MouseLeftButtonDown="WindowMouseLeftButtonDown" >
+        MouseLeftButtonDown="WindowMouseLeftButtonDown" BorderBrush="#01579B" BorderThickness="1.5">
     
     <x:Code>
         <![CDATA[            
