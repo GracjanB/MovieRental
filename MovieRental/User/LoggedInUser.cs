@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Caliburn.Micro;
 using DatabaseAccess.Entities;
+using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.Services;
 using System;
@@ -16,13 +18,16 @@ namespace MovieRental.User
 
         private readonly IMapper _mapper;
 
+        private readonly IEventAggregator _events;
+
         public UserModel User { get; private set; }
 
 
-        public LoggedInUser(IAuthenticationService authService, IMapper mapper)
+        public LoggedInUser(IAuthenticationService authService, IMapper mapper, IEventAggregator eventAggregator)
         {
             _authService = authService;
             _mapper = mapper;
+            _events = eventAggregator;
         }
 
         public async Task<bool> Login(string username, string password)
@@ -49,13 +54,16 @@ namespace MovieRental.User
             return output;
         }
 
-        public bool Logout()
+        public void Logout()
         {
-            bool output = false;
+            User = null;
+            _events.PublishOnUIThread(new UserHasLogoutEvent());
+        }
 
-            // TODO: Make logout function
-
-            return output;
+        public string GetUsername()
+        {
+            var username = User.Username;
+            return username;
         }
     }
 }

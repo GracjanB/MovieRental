@@ -125,6 +125,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EventModels\UserHasLoggedInEvent.cs" />
+    <Compile Include="EventModels\UserHasLogoutEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Models\RegisterFormModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -183,9 +185,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EventModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DatabaseAccess\DatabaseAccess.csproj">
       <Project>{31b1f81c-93b2-4294-a863-e1551ae6a0da}</Project>

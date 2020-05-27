@@ -74,17 +74,18 @@
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
 
                 <!-- Currently logged in username -->
-                <TextBlock Text="{Binding LoggedInUser.FullName}" VerticalAlignment="Center" Foreground="White" FontSize="16" FontFamily="Champagne &amp; Limousines"/>
+                <TextBlock Text="{Binding Username, Mode=TwoWay}" VerticalAlignment="Center" Foreground="White" FontSize="16" FontFamily="Champagne &amp; Limousines"/>
 
                 <!-- Popup Menu -->
                 <materialDesign:PopupBox Margin="10" Foreground="White" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                     <StackPanel Width="150">
-                        <Button Content="Rejestracja" cal:Message.Attach="[Event Click] = [Action RegisterButtonPopupBoxClick]"/>
-                        <Button x:Name="AccountButtonOpen" Content="Konto" cal:Message.Attach="[Event Click] = [Action GetAccountInfo]"/>
-                        <Button Content="Pomoc"/>
+                        <Button Content="Rejestracja" cal:Message.Attach="[Event Click] = [Action RegisterButtonPopupBoxClick]" Visibility="{Binding RegisterButtonVisibility}"/>
+                        <Button Content="Konto" cal:Message.Attach="[Event Click] = [Action GetAccountInfo]" Visibility="{Binding AccountButtonVisibility}"/>
+                        <Button Content="Pomoc" />
                         <Separator/>
-                        <Button Content="Zaloguj" cal:Message.Attach="[Event Click] = [Action LoginButtonPopupBoxClick]"/>
-                        <Button Content="Wyjdź"/>
+                        <Button Content="Zaloguj" cal:Message.Attach="[Event Click] = [Action LoginWindowShow]" Visibility="{Binding LoginButtonVisibility}"/>
+                        <Button Content="Wyloguj" cal:Message.Attach="[Event Click] = [Action Logout]" Visibility="{Binding LogoutButtonVisibility}" />
+                        <Button Content="Wyjdź" cal:Message.Attach="[Event Click] = [Action QuitButton]"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>

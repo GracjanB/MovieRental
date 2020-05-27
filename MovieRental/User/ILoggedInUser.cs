@@ -6,6 +6,8 @@ namespace MovieRental.User
     {
         Task<bool> Login(string username, string password);
 
-        bool Logout();
+        void Logout();
+
+        string GetUsername();
     }
 }

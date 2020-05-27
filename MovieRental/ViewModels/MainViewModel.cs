@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using DatabaseAccess.Model;
+using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.Services;
 using MovieRental.User;
@@ -12,13 +13,35 @@ using System.Windows;
 
 namespace MovieRental.ViewModels
 {
-    public class MainViewModel : Conductor<object>
+    public class MainViewModel : Conductor<object>, IHandle<UserHasLoggedInEvent>, IHandle<UserHasLogoutEvent>
     {
         private readonly SimpleContainer _container;
 
-        public MainViewModel(SimpleContainer container)
+        private readonly IWindowManager _windowManager;
+
+        private readonly IEventAggregator _events;
+
+        private readonly ILoggedInUser _userService;
+
+        private string _username = "";
+
+        public string Username
+        {
+            get { return _username; }
+            set 
+            { 
+                _username = value;
+                NotifyOfPropertyChange(() => Username);
+            }
+        }
+
+        public MainViewModel(SimpleContainer container, IWindowManager windowManager, IEventAggregator eventAggregator, ILoggedInUser userService)
         {
             _container = container;
+            _windowManager = windowManager;
+            _userService = userService;
+            _events = eventAggregator;
+            _events.Subscribe(this);
         }
 
         public void MovieRentalLibraryShow()
@@ -40,5 +63,97 @@ namespace MovieRental.ViewModels
         {
             // TODO: Open GitHub repo in browser
         }
+
+        #region PopUp Menu
+
+        private Visibility _loginButtonVisibility = Visibility.Visible;
+        private Visibility _logoutButtonVisibility = Visibility.Collapsed;
+        private Visibility _registerButtonVisibility = Visibility.Visible;
+        private Visibility _accountButtonVisibility = Visibility.Collapsed;
+
+        public Visibility LoginButtonVisibility
+        {
+            get { return _loginButtonVisibility; }
+            set
+            {
+                _loginButtonVisibility = value;
+                NotifyOfPropertyChange(() => LoginButtonVisibility);
+            }
+        }
+
+        public Visibility LogoutButtonVisibility
+        {
+            get { return _logoutButtonVisibility; }
+            set
+            {
+                _logoutButtonVisibility = value;
+                NotifyOfPropertyChange(() => LogoutButtonVisibility);
+            }
+        }
+
+        public Visibility RegisterButtonVisibility
+        {
+            get { return _registerButtonVisibility; }
+            set 
+            { 
+                _registerButtonVisibility = value;
+                NotifyOfPropertyChange(() => RegisterButtonVisibility);
+            }
+        }
+
+        public Visibility AccountButtonVisibility
+        {
+            get { return _accountButtonVisibility; }
+            set 
+            {
+                _accountButtonVisibility = value;
+                NotifyOfPropertyChange(() => AccountButtonVisibility);
+            }
+        }
+
+        private void SetButtonsVisibility_UserLogin()
+        {
+            LoginButtonVisibility = Visibility.Collapsed;
+            LogoutButtonVisibility = Visibility.Visible;
+            RegisterButtonVisibility = Visibility.Collapsed;
+            AccountButtonVisibility = Visibility.Visible;
+        }
+
+        private void SetButtonsVisibility_UserLogout()
+        {
+            LoginButtonVisibility = Visibility.Visible;
+            LogoutButtonVisibility = Visibility.Collapsed;
+            RegisterButtonVisibility = Visibility.Visible;
+            AccountButtonVisibility = Visibility.Collapsed;
+        }
+
+        public void LoginWindowShow()
+        {
+            var loginVM = _container.GetInstance<LoginViewModel>();
+            _windowManager.ShowDialog(loginVM);
+        }
+
+        public void Logout()
+        {
+            _userService.Logout();
+        }
+
+        #endregion
+
+        #region Events
+
+        public void Handle(UserHasLoggedInEvent userHasLoggedInEvent)
+        {
+            Username = _userService.GetUsername();
+            SetButtonsVisibility_UserLogin();
+        }
+
+        public void Handle(UserHasLogoutEvent userHasLogoutEvent)
+        {
+            Username = "";
+            SetButtonsVisibility_UserLogout();
+        }
+
+        #endregion
     }
 }
