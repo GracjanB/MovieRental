@@ -15,7 +15,7 @@ using System.Windows;
 
 namespace MovieRental.ViewModels
 {
-    public class MainViewModel : Conductor<object>, IHandle<UserHasLoggedInEvent>, IHandle<UserHasLogoutEvent>
+    public class MainViewModel : Conductor<object>, IHandle<UserHasLoggedInEvent>, IHandle<UserHasLogoutEvent>, IHandle<UserHasRegisteredEvent>
     {
         private readonly SimpleContainer _container;
 
@@ -195,6 +195,11 @@ namespace MovieRental.ViewModels
             SetButtonsVisibility_UserLogout();
 
             SnackbarShowMessage(message);
+        }
+
+        public void Handle(UserHasRegisteredEvent userHasRegisteredEvent)
+        {
+            SnackbarShowMessage("Zarejestrowano! Możesz się teraz zalogować");
         }
 
         #endregion

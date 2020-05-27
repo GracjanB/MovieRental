@@ -1,20 +1,31 @@
 ﻿using Caliburn.Micro;
 using DatabaseAccess.Repositories;
+using MovieRental.EventModels;
+using MovieRental.Models;
+using MovieRental.Services;
+using MovieRental.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MovieRental.ViewModels
 {
     public class RegisterViewModel : Screen
     {
-        private readonly IAccountRepository _accountRepo;
+        private readonly IRegisterService _registerService;
 
-        public RegisterViewModel(IAccountRepository accountRepo)
+        private readonly IEventAggregator _events;
+
+        private RegisterFormValidator _registerValidator;
+
+        public RegisterViewModel(IRegisterService registerService, IEventAggregator eventAggregator)
         {
-            _accountRepo = accountRepo;
+            _registerService = registerService;
+            _events = eventAggregator;
+            _registerValidator = new RegisterFormValidator();
         }
 
 
@@ -32,10 +43,30 @@ namespace MovieRental.ViewModels
 
         public string LastName { get; set; }
 
-        public void Register()
+        public async void Register()
         {
-            // TODO: Add posibility to register new user
-            // TODO: Add validator to form
+            var registerModel = new RegisterFormModel
+            {
+                Username = Username,
+                Email = Email,
+                Password = Password,
+                ConfirmPassword = ConfirmPassword,
+                FirstName = FirstName,
+                LastName = LastName
+            };
+
+            var result = _registerValidator.Validate(registerModel);
+
+            if (result.IsValid)
+            {
+                if (await _registerService.Register(registerModel))
+                {
+                    _events.PublishOnUIThread(new UserHasRegisteredEvent());
+                    this.TryClose();
+                }
+                else MessageBox.Show("Wystąpił błąd. Spróbuj ponownie");
+            }
+            else MessageBox.Show("Błąd walidacji danych.");
         }
 
         #endregion

@@ -127,6 +127,7 @@
     </ApplicationDefinition>
     <Compile Include="EventModels\UserHasLoggedInEvent.cs" />
     <Compile Include="EventModels\UserHasLogoutEvent.cs" />
+    <Compile Include="EventModels\UserHasRegisteredEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Models\RegisterFormModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Services\RegisterService.cs" />
     <Compile Include="User\ILoggedInUser.cs" />
     <Compile Include="User\LoggedInUser.cs" />
+    <Compile Include="Validators\RegisterFormValidator.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
