@@ -48,17 +48,20 @@ namespace MovieRental.ViewModels
 
         public void MovieRentalLibraryShow()
         {
-            // TODO: Show Movie Rental Library
+            var moviesVM = _container.GetInstance<MoviesViewModel>();
+            ChangeActiveItem(moviesVM, true);
         }
 
         public void UserMovieLibraryShow()
         {
-            // TODO: Show User Movie Library
+            var userMoviesLibraryVM = _container.GetInstance<UserMoviesLibraryViewModel>();
+            ChangeActiveItem(userMoviesLibraryVM, true);
         }
 
         public void AccountShow()
         {
-            // TODO: Show Account Screen
+            var accountVM = _container.GetInstance<AccountViewModel>();
+            ChangeActiveItem(accountVM, true);
         }
 
         public void GitHubRepositoryRedirect()
