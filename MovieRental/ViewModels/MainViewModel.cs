@@ -183,12 +183,18 @@ namespace MovieRental.ViewModels
         {
             Username = _userService.GetUsername();
             SetButtonsVisibility_UserLogin();
+
+            string message = "Zalogowano. Witaj " + Username;
+            SnackbarShowMessage(message);
         }
 
         public void Handle(UserHasLogoutEvent userHasLogoutEvent)
         {
+            string message = "Wylogowano. Zapraszamy ponownie " + Username;
             Username = "";
             SetButtonsVisibility_UserLogout();
+
+            SnackbarShowMessage(message);
         }
 
         #endregion
