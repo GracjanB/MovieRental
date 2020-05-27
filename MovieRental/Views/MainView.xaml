@@ -95,6 +95,9 @@
             <ContentControl x:Name="ActiveItem"/>
         </Grid>
 
+        <materialDesign:Snackbar x:Name="SnackbarNotification" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="1000"
+                                 MessageQueue="{materialDesign:MessageQueue}" cal:Message.Attach="[Event Loaded] = [Action SnackbarLoaded($source)]" />
+
         <Grid x:Name="GridBackground" Background="#55313131" Opacity="0" Margin="0 50 0 0" Visibility="Collapsed"/>
 
         <Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0"  Background="#f5f5f5" RenderTransformOrigin="0.5,0.5" >

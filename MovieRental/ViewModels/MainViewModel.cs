@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using DatabaseAccess.Model;
+using MaterialDesignThemes.Wpf;
 using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.Services;
@@ -146,6 +147,35 @@ namespace MovieRental.ViewModels
         }
 
         #endregion
+
+
+        #region Snackbar PopUp Notification
+
+        private Snackbar _snackbarNotification;
+
+        public Snackbar SnackbarNotification
+        {
+            get { return _snackbarNotification; }
+            set 
+            { 
+                _snackbarNotification = value;
+                NotifyOfPropertyChange(() => SnackbarNotification);
+            }
+        }
+
+        public void SnackbarLoaded(object sender)
+        {
+            SnackbarNotification = (Snackbar)sender;
+        }
+
+        private void SnackbarShowMessage(string message)
+        {
+            SnackbarNotification.MessageQueue = new SnackbarMessageQueue();
+            SnackbarNotification.MessageQueue.Enqueue(message);
+        }
+
+        #endregion
+
 
         #region Events
 
