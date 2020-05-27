@@ -4,6 +4,7 @@ using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.Services;
 using MovieRental.User;
+using MovieRental.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -131,6 +132,12 @@ namespace MovieRental.ViewModels
         {
             var loginVM = _container.GetInstance<LoginViewModel>();
             _windowManager.ShowDialog(loginVM);
+        }
+
+        public void RegisterWindowShow()
+        {
+            var registerVM = _container.GetInstance<RegisterViewModel>();
+            _windowManager.ShowDialog(registerVM);
         }
 
         public void Logout()
