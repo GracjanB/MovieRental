@@ -38,22 +38,26 @@ namespace MovieRental.ViewModels
 
         public void UserLibraryShow()
         {
-            // TODO
+            var accountLibraryVM = _container.GetInstance<AccountLibraryViewModel>();
+            ChangeActiveItem(accountLibraryVM, true);
         }
 
         public void UserReviewsShow()
         {
-            // TODO
+            var accountReviewsVM = _container.GetInstance<AccountReviewsViewModel>();
+            ChangeActiveItem(accountReviewsVM, true);
         }
 
         public void UserMoviesRentalHistory()
         {
-            // TODO
+            var accountRentalHistoryVM = _container.GetInstance<AccountRentalHistoryViewModel>();
+            ChangeActiveItem(accountRentalHistoryVM, true);
         }
 
         public void AccountSettingsShow()
         {
-            // TODO
+            var accountSettingsVM = _container.GetInstance<AccountSettingsViewModel>();
+            ChangeActiveItem(accountSettingsVM, true);
         }
 
         #endregion

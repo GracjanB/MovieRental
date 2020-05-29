@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="MovieRental.Views.AccountLibraryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:local="clr-namespace:MovieRental.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="490" d:DesignWidth="750" Background="White">
+    <Grid>
+        <TextBlock Text="Account Library" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="30" Padding="10" />
+    </Grid>
+</UserControl>

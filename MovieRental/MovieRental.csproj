@@ -138,12 +138,28 @@
     <Compile Include="User\ILoggedInUser.cs" />
     <Compile Include="User\LoggedInUser.cs" />
     <Compile Include="Validators\RegisterFormValidator.cs" />
+    <Compile Include="ViewModels\AccountLibraryViewModel.cs" />
+    <Compile Include="ViewModels\AccountRentalHistoryViewModel.cs" />
+    <Compile Include="ViewModels\AccountReviewsViewModel.cs" />
+    <Compile Include="ViewModels\AccountSettingsViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\UserMoviesLibraryViewModel.cs" />
+    <Compile Include="Views\AccountLibraryView.xaml.cs">
+      <DependentUpon>AccountLibraryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountRentalHistoryView.xaml.cs">
+      <DependentUpon>AccountRentalHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountReviewsView.xaml.cs">
+      <DependentUpon>AccountReviewsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountSettingsView.xaml.cs">
+      <DependentUpon>AccountSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
@@ -167,6 +183,22 @@
     <Compile Include="Views\UserMoviesLibraryView.xaml.cs">
       <DependentUpon>UserMoviesLibraryView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AccountLibraryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountRentalHistoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountReviewsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
