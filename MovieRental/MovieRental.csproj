@@ -129,6 +129,7 @@
     <Compile Include="EventModels\UserHasLogoutEvent.cs" />
     <Compile Include="EventModels\UserHasRegisteredEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Models\RegisterFormModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Services\AuthenticationService.cs" />

@@ -4,10 +4,87 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
              xmlns:local="clr-namespace:MovieRental.Views"
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="1080" Background="White">
     <Grid>
-        <TextBlock Text="MoviesView" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="50" Padding="20" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 0 (Search Menu) -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="70">
+            <TextBlock Text="Wyszukiwanie" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" Padding="5" VerticalAlignment="Center" Margin="0 10 0 0"/>
+            <TextBox x:Name="MovieNameSearch" Width="200" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Nazwa filmu" 
+                     FontSize="18" VerticalAlignment="Center" Margin="15 0 0 0"/>
+            <ComboBox x:Name="CategorySearch" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="200" VerticalAlignment="Center" FontSize="18"
+                      materialDesign:HintAssist.Hint="Gatunek" Margin="30 4 0 0" SelectedItem="{Binding SelectedCategory}"/>
+            <TextBlock Text="Rok produkcji" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="20" VerticalAlignment="Center" Margin="30 15 0 0"/>
+            <TextBox x:Name="ProductionYearFrom" Width="60" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Od" 
+                     FontSize="18" VerticalAlignment="Center" Margin="15 0 0 0"/>
+            <TextBox x:Name="ProductionYearTo" Width="60" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Do" 
+                     FontSize="18" VerticalAlignment="Center" Margin="15 0 0 0"/>
+            <Button x:Name="Search" Content="Szukaj" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" VerticalAlignment="Center" Margin="30 5 0 0"
+                    Foreground="#01579B"/>
+        </StackPanel>
+
+        <!-- Row 1 -->
+        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="10 0 10 0" />
+
+        <!-- Row 2 -->
+        <Grid Grid.Row="2" Margin="2">
+            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <StackPanel>
+                    <ItemsControl ItemsSource="{Binding Path=Movies}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <materialDesign:Card Width="700" Height="150" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Title}" Style="{StaticResource MaterialDesignHeadline3TextBlock}" 
+                                                FontSize="26" Padding="10 10 5 5" />
+
+                                        <materialDesign:RatingBar Grid.Row="0" Grid.Column="2" IsReadOnly="True" VerticalAlignment="Center" Margin="20 5 0 0" Value="{Binding Rating}"/>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Category, StringFormat='Gatunek: {0}'}" 
+                                                Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="10 5 0 0"/>
+
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding ProductionYear, StringFormat='Rok produkcji: {0}'}" 
+                                                Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="10 5 0 0"/>
+
+                                        <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Text="{Binding PricePerDay, StringFormat='Cena: {0}zł/dzień'}" 
+                                                Style="{StaticResource MaterialDesignHeadline2TextBlock}" FontSize="30" VerticalAlignment="Center"/>
+
+                                        <StackPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="4">
+                                            <Button Content="Szczegóły" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#01579B"
+                                                    HorizontalAlignment="Center" FontSize="20" Height="40" Margin="0 20 0 0" 
+                                                    cal:Message.Attach="[Event Click] = [Action MovieDetails($dataContext)]"/>
+
+                                            <Button Content="Wypożycz" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#01579B"
+                                                    HorizontalAlignment="Center" FontSize="20" Height="40" Margin="0 20 0 0"
+                                                    cal:Message.Attach="[Event Click] = [Action MakeRent($dataContext)]"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>
