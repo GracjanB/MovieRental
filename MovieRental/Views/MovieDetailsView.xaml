@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="MovieRental.Views.MovieDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:local="clr-namespace:MovieRental.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="1080" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0 -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <TextBlock Text="Szklana pułapka 3" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="36" Padding="10" />
+            <materialDesign:RatingBar IsReadOnly="True" VerticalAlignment="Center" Margin="30 5 0 0"/>
+            <StackPanel Orientation="Horizontal" Margin="350 0 0 0">
+                <Button x:Name="RentMovie" Content="Wypożycz" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" Margin="10 0 10 0" Foreground="#01579B"/>
+                <Button x:Name="MoveBack" Content="Powrót" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" Margin="20 0 10 0" Foreground="#01579B"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Row 1 -->
+        <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="10 0 10 0" />
+
+        <!-- Column 0 -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Width="500">
+            <TextBlock Text="Opis:" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="22" Margin="20 10 0 0"/>
+            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" TextWrapping="Wrap" Margin="30 5 5 0" 
+                       Text="Doubtful two bed way pleasure confined followed. Shew up ye away no eyes life or were this. Perfectly did suspicion daughters but his intention. Started on society an brought it explain. Position two saw greatest stronger old. Pianoforte if at simplicity do estimating. Gave read use way make spot how nor. In daughter goodness an likewise oh consider at procured wandered. Songs words wrong by me hills heard timed. Happy eat may doors songs. Be ignorant so of suitable dissuade weddings together. Least whole timed we is. An smallness deficient discourse do newspaper be an eagerness continued. Mr my ready guest ye after short at. "/>
+        </StackPanel>
+
+        <!-- Column 1 -->
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 50 0 0">
+            <TextBlock Text="Kategoria: Akcja" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 10 10 10"/>
+            <TextBlock Text="Rok produkcji: 2017" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="Kraj: Stany zjednoczone" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="Reżyser: Quentin Tarantino" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="Scenariusz: Somebody somebody" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="Cena: 8 zł/dzień" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" Margin="50 70 10 10"/>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
