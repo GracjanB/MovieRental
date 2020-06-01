@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.User;
 using System;
@@ -9,16 +10,19 @@ using System.Threading.Tasks;
 
 namespace MovieRental.ViewModels
 {
-    public class AccountViewModel : Conductor<object>
+    public class AccountViewModel : Conductor<object>, IHandle<AccountBalanceRechargedEvent>
     {
         private readonly SimpleContainer _container;
 
         private readonly ILoggedInUser _userService;
 
-        public AccountViewModel(SimpleContainer simpleContainer, ILoggedInUser userService)
+        private readonly IWindowManager _windowManager;
+
+        public AccountViewModel(SimpleContainer simpleContainer, ILoggedInUser userService, IWindowManager windowManager)
         {
             _container = simpleContainer;
             _userService = userService;
+            _windowManager = windowManager;
         }
 
 
@@ -28,7 +32,8 @@ namespace MovieRental.ViewModels
 
         public void RechargeAccount()
         {
-            // TODO
+            var accountRechargeVM = _container.GetInstance<AccountRechargeViewModel>();
+            _windowManager.ShowDialog(accountRechargeVM);
         }
 
         #endregion
@@ -58,6 +63,15 @@ namespace MovieRental.ViewModels
         {
             var accountSettingsVM = _container.GetInstance<AccountSettingsViewModel>();
             ChangeActiveItem(accountSettingsVM, true);
+        }
+
+        #endregion
+
+        #region Events
+
+        public void Handle(AccountBalanceRechargedEvent accountBalanceRechargedEvent)
+        {
+            // TODO: Refresh account info
         }
 
         #endregion

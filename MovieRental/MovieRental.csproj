@@ -125,6 +125,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EventModels\AccountBalanceRechargedEvent.cs" />
     <Compile Include="EventModels\UserHasLoggedInEvent.cs" />
     <Compile Include="EventModels\UserHasLogoutEvent.cs" />
     <Compile Include="EventModels\UserHasRegisteredEvent.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="User\LoggedInUser.cs" />
     <Compile Include="Validators\RegisterFormValidator.cs" />
     <Compile Include="ViewModels\AccountLibraryViewModel.cs" />
+    <Compile Include="ViewModels\AccountRechargeViewModel.cs" />
     <Compile Include="ViewModels\AccountRentalHistoryViewModel.cs" />
     <Compile Include="ViewModels\AccountReviewsViewModel.cs" />
     <Compile Include="ViewModels\AccountSettingsViewModel.cs" />
@@ -152,6 +154,9 @@
     <Compile Include="ViewModels\UserMoviesLibraryViewModel.cs" />
     <Compile Include="Views\AccountLibraryView.xaml.cs">
       <DependentUpon>AccountLibraryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountRechargeView.xaml.cs">
+      <DependentUpon>AccountRechargeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AccountRentalHistoryView.xaml.cs">
       <DependentUpon>AccountRentalHistoryView.xaml</DependentUpon>
@@ -189,6 +194,10 @@
       <DependentUpon>UserMoviesLibraryView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AccountLibraryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountRechargeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
