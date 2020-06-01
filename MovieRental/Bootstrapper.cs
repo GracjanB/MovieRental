@@ -38,6 +38,7 @@ namespace MovieRental
             MapperConfiguration mapperConfig = new MapperConfiguration(config =>
             {
                 config.CreateMap<Account, UserModel>();
+                config.CreateMap<Video, MovieModel>();
             });
 
             _container
@@ -46,7 +47,8 @@ namespace MovieRental
                 .Singleton<IAuthenticationService, AuthenticationService>()
                 .Singleton<IRegisterService, RegisterService>()
                 .Singleton<ILoggedInUser, LoggedInUser>()
-                .Singleton<IAccountRepository, AccountRepository>();
+                .Singleton<IAccountRepository, AccountRepository>()
+                .Singleton<IVideoRepository, VideoRepository>();
 
             _container
                 .RegisterInstance(typeof(IMapper), "automapper", mapperConfig.CreateMapper());

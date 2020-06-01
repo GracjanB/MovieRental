@@ -1,4 +1,7 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
+using DatabaseAccess.Entities;
+using DatabaseAccess.Repositories;
 using MovieRental.Models;
 using MovieRental.User;
 using System;
@@ -15,12 +18,32 @@ namespace MovieRental.ViewModels
 
         private readonly ILoggedInUser _userService;
 
-        public MoviesViewModel(SimpleContainer container, ILoggedInUser userService)
+        private readonly IVideoRepository _videoRepo;
+
+        private readonly IMapper _mapper;
+
+        public MoviesViewModel(SimpleContainer container, ILoggedInUser userService, IVideoRepository videoRepo, IMapper mapper)
         {
             _container = container;
             _userService = userService;
+            _videoRepo = videoRepo;
+            _mapper = mapper;
         }
 
+        protected override async void OnViewLoaded(object view)
+        {
+            base.OnViewLoaded(view);
+            await LoadVideos();
+        }
+
+        private async Task LoadVideos()
+        {
+            var videos = await _videoRepo.GetVideos();
+            Movies = new BindableCollection<MovieModel>();
+
+            foreach(var video in videos)
+               Movies.Add(_mapper.Map<MovieModel>(video));
+        }
 
         #region Searching Menu
 
@@ -43,7 +66,20 @@ namespace MovieRental.ViewModels
 
         #region Movies List
 
-        public BindableCollection<MovieModel> Movies { get; set; }
+        private BindableCollection<MovieModel> _movies;
+
+        public BindableCollection<MovieModel> Movies
+        {
+            get { return _movies; }
+            set 
+            { 
+                _movies = value;
+                NotifyOfPropertyChange(() => Movies);
+            }
+        }
+
+
+
 
         public void MovieDetails(MovieModel movie)
         {
