@@ -10,7 +10,30 @@ namespace MovieRental.ViewModels
 {
     public class MovieDetailsViewModel : Screen
     {
-        public MovieModel Movie { get; set; }
+        private readonly SimpleContainer _container;
+
+        public MovieDetailsViewModel(SimpleContainer container)
+        {
+            _container = container;
+        }
+
+        public void LoadMovie(MovieModel movie)
+        {
+            Movie = movie;
+        }
+
+
+        private MovieModel _movie;
+
+        public MovieModel Movie
+        {
+            get { return _movie; }
+            set 
+            {
+                _movie = value;
+                NotifyOfPropertyChange(() => Movie);
+            }
+        }
 
         public void RentMovie()
         {
@@ -19,7 +42,9 @@ namespace MovieRental.ViewModels
 
         public void MoveBack()
         {
-            // TODO
+            var moviesVM = _container.GetInstance<MoviesViewModel>();
+            var conductorObject = (MainViewModel)this.Parent;
+            conductorObject.ActivateItem(moviesVM);
         }
     }
 }

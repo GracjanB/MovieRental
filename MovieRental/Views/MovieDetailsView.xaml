@@ -22,7 +22,7 @@
 
         <!-- Row 0 -->
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <TextBlock Text="Szklana pułapka 3" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="36" Padding="10" />
+            <TextBlock Text="{Binding Movie.Title}" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="36" Padding="10" />
             <materialDesign:RatingBar IsReadOnly="True" VerticalAlignment="Center" Margin="30 5 0 0"/>
             <StackPanel Orientation="Horizontal" Margin="350 0 0 0">
                 <Button x:Name="RentMovie" Content="Wypożycz" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" Margin="10 0 10 0" Foreground="#01579B"/>
@@ -37,17 +37,17 @@
         <StackPanel Grid.Row="2" Grid.Column="0" Width="500">
             <TextBlock Text="Opis:" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="22" Margin="20 10 0 0"/>
             <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" TextWrapping="Wrap" Margin="30 5 5 0" 
-                       Text="Doubtful two bed way pleasure confined followed. Shew up ye away no eyes life or were this. Perfectly did suspicion daughters but his intention. Started on society an brought it explain. Position two saw greatest stronger old. Pianoforte if at simplicity do estimating. Gave read use way make spot how nor. In daughter goodness an likewise oh consider at procured wandered. Songs words wrong by me hills heard timed. Happy eat may doors songs. Be ignorant so of suitable dissuade weddings together. Least whole timed we is. An smallness deficient discourse do newspaper be an eagerness continued. Mr my ready guest ye after short at. "/>
+                       Text="{Binding Movie.Description}"/>
         </StackPanel>
 
         <!-- Column 1 -->
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 50 0 0">
-            <TextBlock Text="Kategoria: Akcja" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 10 10 10"/>
-            <TextBlock Text="Rok produkcji: 2017" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="Kraj: Stany zjednoczone" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="Reżyser: Quentin Tarantino" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="Scenariusz: Somebody somebody" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="Cena: 8 zł/dzień" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" Margin="50 70 10 10"/>
+            <TextBlock Text="{Binding Movie.Category, StringFormat='Kategoria: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 10 10 10"/>
+            <TextBlock Text="{Binding Movie.ProductionYear, StringFormat='Rok produkcji: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.Country, StringFormat='Kraj: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.Director, StringFormat='Reżyser: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.Scenario, StringFormat='Scenariusz: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.PricePerDay, StringFormat='Cena: {0} zł/dzień'}" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" Margin="50 70 10 10"/>
         </StackPanel>
         
     </Grid>

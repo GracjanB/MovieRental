@@ -78,12 +78,13 @@ namespace MovieRental.ViewModels
             }
         }
 
-
-
-
         public void MovieDetails(MovieModel movie)
         {
-            // TODO
+            var movieDetailsVM = _container.GetInstance<MovieDetailsViewModel>();
+            movieDetailsVM.LoadMovie(movie);
+
+            var conductorObject = (MainViewModel)this.Parent;
+            conductorObject.ActivateItem(movieDetailsVM);
         }
 
         public void MakeRent(MovieModel movie)
