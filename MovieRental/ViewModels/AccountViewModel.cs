@@ -25,15 +25,35 @@ namespace MovieRental.ViewModels
             _windowManager = windowManager;
         }
 
+        protected override void OnViewLoaded(object view)
+        {
+            base.OnViewLoaded(view);
+            LoadUserInfo();
+        }
 
         #region User Info Card
 
-        public UserModel User { get; set; } = new UserModel();
+        private UserModel _user;
+
+        public UserModel User
+        {
+            get { return _user; }
+            set 
+            { 
+                _user = value;
+                NotifyOfPropertyChange(() => User);
+            }
+        }
 
         public void RechargeAccount()
         {
             var accountRechargeVM = _container.GetInstance<AccountRechargeViewModel>();
             _windowManager.ShowDialog(accountRechargeVM);
+        }
+
+        private void LoadUserInfo()
+        {
+            User = _userService.GetUser();
         }
 
         #endregion
@@ -71,7 +91,7 @@ namespace MovieRental.ViewModels
 
         public void Handle(AccountBalanceRechargedEvent accountBalanceRechargedEvent)
         {
-            // TODO: Refresh account info
+            LoadUserInfo();
         }
 
         #endregion

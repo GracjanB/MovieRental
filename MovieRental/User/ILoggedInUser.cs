@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using MovieRental.Models;
+using System.Threading.Tasks;
 
 namespace MovieRental.User
 {
@@ -9,5 +10,7 @@ namespace MovieRental.User
         void Logout();
 
         string GetUsername();
+
+        UserModel GetUser();
     }
 }

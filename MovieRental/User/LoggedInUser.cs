@@ -65,5 +65,10 @@ namespace MovieRental.User
             var username = User.Username;
             return username;
         }
+
+        public UserModel GetUser()
+        {
+            return User;
+        }
     }
 }

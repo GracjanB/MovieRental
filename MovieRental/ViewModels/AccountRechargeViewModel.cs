@@ -1,11 +1,13 @@
 ﻿using Caliburn.Micro;
 using DatabaseAccess.Repositories;
 using MovieRental.EventModels;
+using MovieRental.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MovieRental.ViewModels
 {
@@ -15,23 +17,34 @@ namespace MovieRental.ViewModels
 
         private readonly IAccountRepository _accountRepo;
 
-        public AccountRechargeViewModel(IEventAggregator events, IAccountRepository accountRepo)
+        private readonly ILoggedInUser _user;
+
+        public AccountRechargeViewModel(IEventAggregator events, IAccountRepository accountRepo, ILoggedInUser user)
         {
             _events = events;
             _accountRepo = accountRepo;
+            _user = user;
         }
 
         #region Forms Control
 
         public int Amount { get; set; }
 
-        public void Save()
+        public async void Save()
         {
-            // TODO: Add Validator
-            // TODO: Update account balance
+            if(Amount > 0)
+            {
+                var user = _user.GetUser();
+                var result = await _accountRepo.RechargeBalance(user.Id, Convert.ToDecimal(Amount));
 
-            _events.PublishOnUIThread(new AccountBalanceRechargedEvent());
-            this.TryClose();
+                if (result)
+                {
+                    _events.PublishOnUIThread(new AccountBalanceRechargedEvent());
+                    this.TryClose();
+                }
+                else
+                    MessageBox.Show("Wystąpił błąd, spróbuj ponownie.");
+            }
         }
 
         #endregion

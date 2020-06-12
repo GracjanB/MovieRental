@@ -2,6 +2,7 @@
 using DatabaseAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -57,6 +58,22 @@ namespace DatabaseAccess.Repositories
             catch { }
 
             return account;
+        }
+
+        public async Task<bool> RechargeBalance(int userId, decimal amount)
+        {
+            try
+            {
+                Account account = await _context.Accounts.FirstOrDefaultAsync(x => x.Id == userId);
+                if (account != null)
+                {
+                    account.Balance += amount;
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                else return false;
+            }
+            catch(Exception) { return false; }
         }
     }
 }
