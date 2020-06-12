@@ -149,6 +149,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModels\MovieRentViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\UserMoviesLibraryViewModel.cs" />
@@ -183,6 +184,9 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Views\MovieDetailsView.xaml.cs">
       <DependentUpon>MovieDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MovieRentView.xaml.cs">
+      <DependentUpon>MovieRentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MoviesView.xaml.cs">
       <DependentUpon>MoviesView.xaml</DependentUpon>
@@ -226,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MovieDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MovieRentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,6 +14,7 @@ using DatabaseAccess.Entities;
 using MovieRental.Models;
 using MovieRental.Helpers;
 using System.Windows.Controls;
+using DatabaseAccess.Repositories.Implementations;
 
 namespace MovieRental
 {
@@ -48,7 +49,8 @@ namespace MovieRental
                 .Singleton<IRegisterService, RegisterService>()
                 .Singleton<ILoggedInUser, LoggedInUser>()
                 .Singleton<IAccountRepository, AccountRepository>()
-                .Singleton<IVideoRepository, VideoRepository>();
+                .Singleton<IVideoRepository, VideoRepository>()
+                .Singleton<IVideoRentalRepository, VideoRentalRepository>();
 
             _container
                 .RegisterInstance(typeof(IMapper), "automapper", mapperConfig.CreateMapper());
