@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using DatabaseAccess.Entities;
+using DatabaseAccess.Repositories;
 using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.Services;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace MovieRental.User
 {
-    public class LoggedInUser : ILoggedInUser
+    public class LoggedInUser : ILoggedInUser, IHandle<UserCredentialsChangedEvent>
     {
         private readonly IAuthenticationService _authService;
 
@@ -20,14 +21,21 @@ namespace MovieRental.User
 
         private readonly IEventAggregator _events;
 
+        private readonly IAccountRepository _accountRepo;
+
         public UserModel User { get; private set; }
 
+        public bool IsActive { get; set; } = false;
 
-        public LoggedInUser(IAuthenticationService authService, IMapper mapper, IEventAggregator eventAggregator)
+
+        public LoggedInUser(IAuthenticationService authService, IMapper mapper, IEventAggregator eventAggregator,
+            IAccountRepository accountRepo)
         {
             _authService = authService;
+            _accountRepo = accountRepo;
             _mapper = mapper;
             _events = eventAggregator;
+            _events.Subscribe(this);
         }
 
         public async Task<bool> Login(string username, string password)
@@ -48,6 +56,7 @@ namespace MovieRental.User
             {
                 User = _mapper.Map<UserModel>(account);
 
+                IsActive = true;
                 output = true;
             }
 
@@ -57,6 +66,7 @@ namespace MovieRental.User
         public void Logout()
         {
             User = null;
+            IsActive = false;
             _events.PublishOnUIThread(new UserHasLogoutEvent());
         }
 
@@ -70,5 +80,18 @@ namespace MovieRental.User
         {
             return User;
         }
+
+        #region Events
+
+        public async void Handle(UserCredentialsChangedEvent userCredentialsChangedEvent)
+        {
+            if(User != null)
+            {
+                var account = await _accountRepo.GetAccount(User.Id);
+                User = _mapper.Map<UserModel>(account);
+            }
+        }
+
+        #endregion
     }
 }

@@ -18,11 +18,16 @@ namespace MovieRental.ViewModels
 
         private readonly IWindowManager _windowManager;
 
-        public AccountViewModel(SimpleContainer simpleContainer, ILoggedInUser userService, IWindowManager windowManager)
+        private readonly IEventAggregator _events;
+
+        public AccountViewModel(SimpleContainer simpleContainer, ILoggedInUser userService, IWindowManager windowManager,
+            IEventAggregator events)
         {
             _container = simpleContainer;
             _userService = userService;
             _windowManager = windowManager;
+            _events = events;
+            _events.Subscribe(this);
         }
 
         protected override void OnViewLoaded(object view)
@@ -91,6 +96,7 @@ namespace MovieRental.ViewModels
 
         public void Handle(AccountBalanceRechargedEvent accountBalanceRechargedEvent)
         {
+            _events.PublishOnUIThread(new UserCredentialsChangedEvent());
             LoadUserInfo();
         }
 

@@ -26,21 +26,21 @@
                                      Width="180" Height="180"/>
             
             <!-- User Name -->
-            <TextBlock Text="NazwaUzytkownika" Style="{StaticResource MaterialDesignHeadline3TextBlock}" 
+            <TextBlock Text="{Binding User.Username}" Style="{StaticResource MaterialDesignHeadline3TextBlock}" 
                        HorizontalAlignment="Center" FontSize="24"/>
             
             <!-- User Full Name -->
-            <TextBlock Text="Imie Nazwisko" Style="{StaticResource MaterialDesignHeadline5TextBlock}" HorizontalAlignment="Center" 
+            <TextBlock Text="{Binding User.FullName}" Style="{StaticResource MaterialDesignHeadline5TextBlock}" HorizontalAlignment="Center" 
                        FontSize="16" Margin="0 5 0 0" Foreground="#424242"/>
             
             <!-- User Email -->
-            <TextBlock Text="some.some@gmail.com" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center" 
+            <TextBlock Text="{Binding User.Email}" Style="{StaticResource MaterialDesignHeadline3TextBlock}" HorizontalAlignment="Center" 
                        FontSize="13" Margin="0 5 0 0"/>
             
             <!-- Account Balance -->
             <TextBlock Text="Dostępne środki:" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" 
                        HorizontalAlignment="Center" Margin="0 30 0 0"/>
-            <TextBlock Text="34 zł" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" 
+            <TextBlock Text="{Binding User.Balance, StringFormat=' {0:#,#.##} zł'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" 
                        HorizontalAlignment="Center" Margin="0 5 0 0"/>
             
             <!-- Account Recharge Button -->

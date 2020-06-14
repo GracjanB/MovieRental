@@ -126,6 +126,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EventModels\AccountBalanceRechargedEvent.cs" />
+    <Compile Include="EventModels\UserCredentialsChangedEvent.cs" />
     <Compile Include="EventModels\UserHasLoggedInEvent.cs" />
     <Compile Include="EventModels\UserHasLogoutEvent.cs" />
     <Compile Include="EventModels\UserHasRegisteredEvent.cs" />

@@ -60,8 +60,12 @@ namespace MovieRental.ViewModels
 
         public void AccountShow()
         {
-            var accountVM = _container.GetInstance<AccountViewModel>();
-            ChangeActiveItem(accountVM, true);
+            if (_userService.IsActive)
+            {
+                var accountVM = _container.GetInstance<AccountViewModel>();
+                ChangeActiveItem(accountVM, true);
+            }
+            else MessageBox.Show("Musisz się zalogować.");
         }
 
         public void GitHubRepositoryRedirect()
@@ -149,6 +153,11 @@ namespace MovieRental.ViewModels
             _userService.Logout();
         }
 
+        public void QuitButton()
+        {
+            TryClose();
+        }
+
         #endregion
 
 
@@ -196,7 +205,8 @@ namespace MovieRental.ViewModels
             string message = "Wylogowano. Zapraszamy ponownie " + Username;
             Username = "";
             SetButtonsVisibility_UserLogout();
-
+            var moviesVM = _container.GetInstance<MoviesViewModel>();
+            ChangeActiveItem(moviesVM, true);
             SnackbarShowMessage(message);
         }
 

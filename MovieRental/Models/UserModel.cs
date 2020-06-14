@@ -19,5 +19,13 @@ namespace MovieRental.Models
         public string LastName { get; set; }
 
         public decimal Balance { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
     }
 }
