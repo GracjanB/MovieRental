@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using DatabaseAccess.Entities;
+using DatabaseAccess.Repositories;
 using DatabaseAccess.Repositories.Implementations;
 using MovieRental.Models;
 using MovieRental.User;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MovieRental.ViewModels
 {
@@ -19,11 +21,18 @@ namespace MovieRental.ViewModels
 
         private readonly IVideoRentalRepository _rentalRepo;
 
-        public MovieRentViewModel(ILoggedInUser user, IEventAggregator events, IVideoRentalRepository rentalRepo)
+        private readonly IAccountRepository _accountRepo;
+
+        private readonly SimpleContainer _container;
+
+        public MovieRentViewModel(ILoggedInUser user, IEventAggregator events, IVideoRentalRepository rentalRepo,
+            SimpleContainer container, IAccountRepository accountRepo)
         {
             _user = user;
             _events = events;
             _rentalRepo = rentalRepo;
+            _accountRepo = accountRepo;
+            _container = container;
         }
 
         public void LoadMovie(MovieModel movie) { Movie = movie; }
@@ -84,19 +93,28 @@ namespace MovieRental.ViewModels
         {
             var user = _user.GetUser();
 
-            var rental = new VideoRental
+            if(CalculatedCost > user.Balance)
             {
-                DateCreated = DateTime.UtcNow,
-                DateStart = SelectedDateFrom,
-                DateEnd = SelectedDateTo,
-                Price = CalculatedCost,
-                VideoId = Movie.Id,
-                AccountId = user.Id
-            };
+                MessageBox.Show("Nie masz wystarczających środków na koncie.");
+            }
+            else
+            {
+                var rental = new VideoRental
+                {
+                    DateCreated = DateTime.UtcNow,
+                    DateStart = SelectedDateFrom,
+                    DateEnd = SelectedDateTo,
+                    Price = CalculatedCost,
+                    VideoId = Movie.Id,
+                    AccountId = user.Id
+                };
 
-            var result = await _rentalRepo.AddRental(rental);
-            
-            // TODO 
+                var result = await _rentalRepo.AddRental(rental);
+                var result2 = await _accountRepo.RechargeBalance(user.Id, CalculatedCost, false);
+
+                if (result && result2)
+                    MessageBox.Show("GOOD");
+            }
         }
 
         #endregion

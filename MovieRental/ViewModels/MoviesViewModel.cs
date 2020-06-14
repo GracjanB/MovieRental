@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MovieRental.ViewModels
 {
@@ -89,7 +90,15 @@ namespace MovieRental.ViewModels
 
         public void MakeRent(MovieModel movie)
         {
-            // TODO
+            if (_userService.IsActive)
+            {
+                var movieRentVM = _container.GetInstance<MovieRentViewModel>();
+                movieRentVM.LoadMovie(movie);
+
+                var conductorObject = (MainViewModel)this.Parent;
+                conductorObject.ActivateItem(movieRentVM);
+            }
+            else MessageBox.Show("Musisz się zalogować.");
         }
 
         #endregion

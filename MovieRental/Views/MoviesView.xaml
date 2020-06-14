@@ -66,7 +66,7 @@
                                         <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding ProductionYear, StringFormat='Rok produkcji: {0}'}" 
                                                 Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="10 5 0 0"/>
 
-                                        <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Text="{Binding PricePerDay, StringFormat='Cena: {0}zł/dzień'}" 
+                                        <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Text="{Binding PricePerDay, StringFormat='Cena: {0:#,#.##}zł/dzień'}" 
                                                 Style="{StaticResource MaterialDesignHeadline2TextBlock}" FontSize="30" VerticalAlignment="Center" Margin="10 0 0 0"/>
 
                                         <StackPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="4">

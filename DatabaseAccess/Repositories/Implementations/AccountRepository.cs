@@ -60,14 +60,18 @@ namespace DatabaseAccess.Repositories
             return account;
         }
 
-        public async Task<bool> RechargeBalance(int userId, decimal amount)
+        public async Task<bool> RechargeBalance(int userId, decimal amount, bool add = true)
         {
             try
             {
                 Account account = await _context.Accounts.FirstOrDefaultAsync(x => x.Id == userId);
                 if (account != null)
                 {
-                    account.Balance += amount;
+                    if (add)
+                        account.Balance += amount;
+                    else
+                        account.Balance -= amount;
+
                     await _context.SaveChangesAsync();
                     return true;
                 }

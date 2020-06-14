@@ -30,16 +30,27 @@
         <StackPanel Grid.Row="2" Grid.Column="0" Margin="30 10 0 0">
             <materialDesign:Card Width="350" Height="450">
                 <StackPanel>
-                    <TextBlock Text="Siedem" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="22" Padding="10 10 5 5" />
-                    <materialDesign:RatingBar IsReadOnly="True" VerticalAlignment="Center" Margin="10 5 0 0"/>
+                    <TextBlock Text="{Binding Movie.Title}" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="22" Padding="10 10 5 5" />
+                    <materialDesign:RatingBar Value="{Binding Movie.Rating}" IsReadOnly="True" VerticalAlignment="Center" Margin="10 5 0 0"/>
                     <Separator Style="{StaticResource MaterialDesignDarkSeparator}" Margin="10 5 10 0" />
-                    <TextBlock Text="Kategoria: Thriller" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="16" Margin="20 10 0 0" />
-                    <TextBlock Text="Rok produkcji: 2019" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="16" Margin="20 0 0 0" />
-                    <TextBlock Text="Kraj: USA/Anglia" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="16" Margin="20 0 0 0" />
-                    <TextBlock Text="Reżyser: James Cameron" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="16" Margin="20 0 0 0" />
-                    <TextBlock Text="Scenariusz: James Cameron" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="16" Margin="20 0 0 0" />
-                    <TextBlock Text="Cena: 4 zł/dzień" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="20" Margin="0 30 0 0" 
-                               HorizontalAlignment="Center"/>
+                    
+                    <TextBlock Text="{Binding Movie.Category, StringFormat='Gatunek: {0}'}" FontSize="16" Margin="20 10 0 0" 
+                               Style="{StaticResource MaterialDesignBody1TextBlock}" />
+
+                    <TextBlock Text="{Binding Movie.ProductionYear, StringFormat='Rok produkcji: {0}'}" FontSize="16" Margin="20 0 0 0" 
+                               Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+
+                    <TextBlock Text="{Binding Movie.Country, StringFormat='Kraj: {0}'}" FontSize="16" Margin="20 0 0 0" 
+                               Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+
+                    <TextBlock Text="{Binding Movie.Director, StringFormat='Reżyser: {0}'}" FontSize="16" Margin="20 0 0 0" 
+                               Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+
+                    <TextBlock Text="{Binding Movie.Scenario, StringFormat='Scenariusz: {0}'}" FontSize="16" Margin="20 0 0 0" 
+                               Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                    
+                    <TextBlock Text="{Binding Movie.PricePerDay, StringFormat='Cena: {0:#,#.##} zł/dzień'}" FontSize="20" Margin="0 30 0 0" 
+                               HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
                 </StackPanel>
             </materialDesign:Card>
         </StackPanel>
@@ -53,8 +64,9 @@
                 <DatePicker SelectedDate="{Binding SelectedDateTo, Mode=TwoWay}" Width="200" FontSize="16" Margin="50 20 0 0"
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" materialDesign:HintAssist.Hint="Data do" />
             </StackPanel>
-            <TextBlock Text="Obliczona cena: 32 zł" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="20" 
-                       Margin="50 20 0 0"/>
+            <TextBlock Text="{Binding CalculatedCost, StringFormat='Obliczona cena: {0:#,#.##} zł'}" FontSize="20" Margin="50 20 0 0"
+                       Style="{StaticResource MaterialDesignHeadline3TextBlock}"/>
+            
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Center">
                 <Button x:Name="CalculateCost" Content="Oblicz koszt" Style="{StaticResource MaterialDesignFlatButton}" Width="150" 
                         Margin="0 0 100 0" FontSize="16"/>
