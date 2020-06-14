@@ -141,35 +141,35 @@
     <Compile Include="User\ILoggedInUser.cs" />
     <Compile Include="User\LoggedInUser.cs" />
     <Compile Include="Validators\RegisterFormValidator.cs" />
-    <Compile Include="ViewModels\AccountLibraryViewModel.cs" />
-    <Compile Include="ViewModels\AccountRechargeViewModel.cs" />
-    <Compile Include="ViewModels\AccountRentalHistoryViewModel.cs" />
-    <Compile Include="ViewModels\AccountReviewsViewModel.cs" />
-    <Compile Include="ViewModels\AccountSettingsViewModel.cs" />
-    <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountLibraryViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountRechargeViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountRentalHistoryViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountReviewsViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\MovieDetailsViewModel.cs" />
-    <Compile Include="ViewModels\MovieRentViewModel.cs" />
-    <Compile Include="ViewModels\MoviesViewModel.cs" />
+    <Compile Include="ViewModels\Movies\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Movies\MovieRentViewModel.cs" />
+    <Compile Include="ViewModels\Movies\MoviesViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\UserMoviesLibraryViewModel.cs" />
-    <Compile Include="Views\AccountLibraryView.xaml.cs">
+    <Compile Include="Views\Account\AccountLibraryView.xaml.cs">
       <DependentUpon>AccountLibraryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountRechargeView.xaml.cs">
+    <Compile Include="Views\Account\AccountRechargeView.xaml.cs">
       <DependentUpon>AccountRechargeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountRentalHistoryView.xaml.cs">
+    <Compile Include="Views\Account\AccountRentalHistoryView.xaml.cs">
       <DependentUpon>AccountRentalHistoryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountReviewsView.xaml.cs">
+    <Compile Include="Views\Account\AccountReviewsView.xaml.cs">
       <DependentUpon>AccountReviewsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountSettingsView.xaml.cs">
+    <Compile Include="Views\Account\AccountSettingsView.xaml.cs">
       <DependentUpon>AccountSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountView.xaml.cs">
+    <Compile Include="Views\Account\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
@@ -183,13 +183,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Views\MovieDetailsView.xaml.cs">
+    <Compile Include="Views\Movies\MovieDetailsView.xaml.cs">
       <DependentUpon>MovieDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieRentView.xaml.cs">
+    <Compile Include="Views\Movies\MovieRentView.xaml.cs">
       <DependentUpon>MovieRentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MoviesView.xaml.cs">
+    <Compile Include="Views\Movies\MoviesView.xaml.cs">
       <DependentUpon>MoviesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterView.xaml.cs">
@@ -198,27 +198,27 @@
     <Compile Include="Views\UserMoviesLibraryView.xaml.cs">
       <DependentUpon>UserMoviesLibraryView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\AccountLibraryView.xaml">
+    <Page Include="Views\Account\AccountLibraryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountRechargeView.xaml">
+    <Page Include="Views\Account\AccountRechargeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountRentalHistoryView.xaml">
+    <Page Include="Views\Account\AccountRentalHistoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountReviewsView.xaml">
+    <Page Include="Views\Account\AccountReviewsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountSettingsView.xaml">
+    <Page Include="Views\Account\AccountSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountView.xaml">
+    <Page Include="Views\Account\AccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,15 +230,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MovieDetailsView.xaml">
+    <Page Include="Views\Movies\MovieDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MovieRentView.xaml">
+    <Page Include="Views\Movies\MovieRentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MoviesView.xaml">
+    <Page Include="Views\Movies\MoviesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
