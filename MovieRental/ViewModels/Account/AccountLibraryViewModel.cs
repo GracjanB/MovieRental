@@ -4,6 +4,7 @@ using DatabaseAccess.Repositories.Implementations;
 using MovieRental.Models;
 using MovieRental.User;
 using MovieRental.ViewModels.Movies;
+using MovieRental.Views;
 using MovieRental.Views.Movies;
 using System;
 using System.Collections.Generic;
@@ -82,8 +83,9 @@ namespace MovieRental.ViewModels
             var movieDetailsVM = _container.GetInstance<MovieDetailsViewModel>();
             movieDetailsVM.LoadMovie(movieRentalModel.Movie);
 
-            var conductorObject = _container.GetInstance<MainViewModel>();
-            conductorObject.ActivateItem(movieDetailsVM);
+            var conductor = (AccountViewModel)this.Parent;
+            var mainConductor = (MainViewModel)conductor.Parent;
+            mainConductor.ActivateItem(movieDetailsVM);
         }
 
         public void MakeReview(MovieRentalModel movieRentalModel)
