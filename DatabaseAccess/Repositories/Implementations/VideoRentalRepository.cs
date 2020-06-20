@@ -34,16 +34,22 @@ namespace DatabaseAccess.Repositories.Implementations
             return output;
         }
 
-        public async Task<List<VideoRental>> GetRentals(int accountId)
+        public async Task<List<VideoRental>> GetRentals(int accountId, bool archiveRentals = false)
         {
             List<VideoRental> rentals = null;
 
             try
             {
-                rentals = await _context.VideoRentals
-                    .Include(x => x.Video)
-                    .Where(x => x.DateEnd >= DateTime.Now)
-                    .ToListAsync();
+                if(archiveRentals)
+                    rentals = await _context.VideoRentals
+                        .Include(x => x.Video)
+                        .Where(x => x.DateEnd < DateTime.Now)
+                        .ToListAsync();
+                else
+                    rentals = await _context.VideoRentals
+                        .Include(x => x.Video)
+                        .Where(x => x.DateEnd >= DateTime.Now)
+                        .ToListAsync();
             }
             catch(Exception) { }
 

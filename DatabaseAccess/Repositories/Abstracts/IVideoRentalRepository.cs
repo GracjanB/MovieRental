@@ -8,6 +8,6 @@ namespace DatabaseAccess.Repositories.Implementations
     {
         Task<bool> AddRental(VideoRental rental);
 
-        Task<List<VideoRental>> GetRentals(int accountId);
+        Task<List<VideoRental>> GetRentals(int accountId, bool archiveRentals = false);
     }
 }
