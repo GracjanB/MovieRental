@@ -76,6 +76,12 @@ namespace MovieRental.User
             return username;
         }
 
+        public int GetUserId()
+        {
+            var userId = User.Id;
+            return userId;
+        }
+
         public UserModel GetUser()
         {
             return User;

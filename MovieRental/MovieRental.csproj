@@ -132,6 +132,7 @@
     <Compile Include="EventModels\UserHasRegisteredEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Models\MovieModel.cs" />
+    <Compile Include="Models\MovieRentalModel.cs" />
     <Compile Include="Models\RegisterFormModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Movies\MoviePlayerViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieRentViewModel.cs" />
     <Compile Include="ViewModels\Movies\MoviesViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
@@ -185,6 +187,9 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Views\Movies\MovieDetailsView.xaml.cs">
       <DependentUpon>MovieDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Movies\MoviePlayerView.xaml.cs">
+      <DependentUpon>MoviePlayerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Movies\MovieRentView.xaml.cs">
       <DependentUpon>MovieRentView.xaml</DependentUpon>
@@ -234,6 +239,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Movies\MoviePlayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Movies\MovieRentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -278,7 +287,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helpers\AutoMapper Profiles\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseAccess\DatabaseAccess.csproj">
       <Project>{31b1f81c-93b2-4294-a863-e1551ae6a0da}</Project>

@@ -13,6 +13,8 @@ namespace MovieRental.User
 
         string GetUsername();
 
+        int GetUserId();
+
         UserModel GetUser();
     }
 }
