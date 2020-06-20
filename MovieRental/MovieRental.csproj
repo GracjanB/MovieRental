@@ -146,7 +146,6 @@
     <Compile Include="ViewModels\Account\AccountLibraryViewModel.cs" />
     <Compile Include="ViewModels\Account\AccountRechargeViewModel.cs" />
     <Compile Include="ViewModels\Account\AccountRentalHistoryViewModel.cs" />
-    <Compile Include="ViewModels\Account\AccountReviewsViewModel.cs" />
     <Compile Include="ViewModels\Account\AccountSettingsViewModel.cs" />
     <Compile Include="ViewModels\Account\AccountViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -166,9 +165,6 @@
     </Compile>
     <Compile Include="Views\Account\AccountRentalHistoryView.xaml.cs">
       <DependentUpon>AccountRentalHistoryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Account\AccountReviewsView.xaml.cs">
-      <DependentUpon>AccountReviewsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Account\AccountSettingsView.xaml.cs">
       <DependentUpon>AccountSettingsView.xaml</DependentUpon>
@@ -217,10 +213,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Account\AccountRentalHistoryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Account\AccountReviewsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

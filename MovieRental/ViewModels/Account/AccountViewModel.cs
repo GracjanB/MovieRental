@@ -72,12 +72,6 @@ namespace MovieRental.ViewModels
             ChangeActiveItem(accountLibraryVM, true);
         }
 
-        public void UserReviewsShow()
-        {
-            var accountReviewsVM = _container.GetInstance<AccountReviewsViewModel>();
-            ChangeActiveItem(accountReviewsVM, true);
-        }
-
         public void UserMoviesRentalHistory()
         {
             var accountRentalHistoryVM = _container.GetInstance<AccountRentalHistoryViewModel>();
