@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
 using MovieRental.Models;
+using MovieRental.ViewModels.Movies;
+using MovieRental.Views.Movies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,12 @@ namespace MovieRental.ViewModels
     {
         private readonly SimpleContainer _container;
 
-        public MovieDetailsViewModel(SimpleContainer container)
+        private readonly IWindowManager _windowManager;
+
+        public MovieDetailsViewModel(SimpleContainer container, IWindowManager windowManager)
         {
             _container = container;
+            _windowManager = windowManager;
         }
 
         public void LoadMovie(MovieModel movie)
@@ -33,6 +38,13 @@ namespace MovieRental.ViewModels
                 _movie = value;
                 NotifyOfPropertyChange(() => Movie);
             }
+        }
+
+        public void MakeReview()
+        {
+            var movieMakeReviewVM = _container.GetInstance<MovieMakeReviewViewModel>();
+            movieMakeReviewVM.SetMovieId(Movie.Id);
+            _windowManager.ShowDialog(movieMakeReviewVM);
         }
 
         public void RentMovie()

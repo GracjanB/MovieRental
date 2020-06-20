@@ -15,7 +15,11 @@ using System.Windows;
 
 namespace MovieRental.ViewModels
 {
-    public class MainViewModel : Conductor<object>, IHandle<UserHasLoggedInEvent>, IHandle<UserHasLogoutEvent>, IHandle<UserHasRegisteredEvent>
+    public class MainViewModel : Conductor<object>, 
+        IHandle<UserHasLoggedInEvent>, 
+        IHandle<UserHasLogoutEvent>, 
+        IHandle<UserHasRegisteredEvent>, 
+        IHandle<NewReviewAddedEvent>
     {
         private readonly SimpleContainer _container;
 
@@ -213,6 +217,11 @@ namespace MovieRental.ViewModels
         public void Handle(UserHasRegisteredEvent userHasRegisteredEvent)
         {
             SnackbarShowMessage("Zarejestrowano! Możesz się teraz zalogować");
+        }
+
+        public void Handle(NewReviewAddedEvent newReviewAddedEvent)
+        {
+            SnackbarShowMessage("Pomyślnie dodano recenzję");
         }
 
         #endregion

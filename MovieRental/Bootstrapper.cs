@@ -51,7 +51,8 @@ namespace MovieRental
                 .Singleton<ILoggedInUser, LoggedInUser>()
                 .Singleton<IAccountRepository, AccountRepository>()
                 .Singleton<IVideoRepository, VideoRepository>()
-                .Singleton<IVideoRentalRepository, VideoRentalRepository>();
+                .Singleton<IVideoRentalRepository, VideoRentalRepository>()
+                .Singleton<IReviewsRepository, ReviewsRepository>();
 
             _container
                 .RegisterInstance(typeof(IMapper), "automapper", mapperConfig.CreateMapper());

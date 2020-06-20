@@ -126,6 +126,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EventModels\AccountBalanceRechargedEvent.cs" />
+    <Compile Include="EventModels\NewReviewAddedEvent.cs" />
     <Compile Include="EventModels\UserCredentialsChangedEvent.cs" />
     <Compile Include="EventModels\UserHasLoggedInEvent.cs" />
     <Compile Include="EventModels\UserHasLogoutEvent.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Movies\MovieMakeReviewViewModel.cs" />
     <Compile Include="ViewModels\Movies\MoviePlayerViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieRentViewModel.cs" />
     <Compile Include="ViewModels\Movies\MoviesViewModel.cs" />
@@ -187,6 +189,9 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Views\Movies\MovieDetailsView.xaml.cs">
       <DependentUpon>MovieDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Movies\MovieMakeReviewView.xaml.cs">
+      <DependentUpon>MovieMakeReviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Movies\MoviePlayerView.xaml.cs">
       <DependentUpon>MoviePlayerView.xaml</DependentUpon>
@@ -236,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Movies\MovieDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Movies\MovieMakeReviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

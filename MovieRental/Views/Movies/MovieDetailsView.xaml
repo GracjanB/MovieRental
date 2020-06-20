@@ -21,14 +21,15 @@
         </Grid.ColumnDefinitions>
 
         <!-- Row 0 -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
             <TextBlock Text="{Binding Movie.Title}" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="36" Padding="10" />
             <materialDesign:RatingBar IsReadOnly="True" VerticalAlignment="Center" Margin="30 5 0 0"/>
-            <StackPanel Orientation="Horizontal" Margin="350 0 0 0">
+            <Button x:Name="MakeReview" Content="Wystaw opinię" Width="170" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Margin="10 0 0 0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 0">
                 <Button x:Name="RentMovie" Content="Wypożycz" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" Margin="10 0 10 0" Foreground="#01579B"/>
                 <Button x:Name="MoveBack" Content="Powrót" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" Margin="20 0 10 0" Foreground="#01579B"/>
             </StackPanel>
-        </StackPanel>
+        </DockPanel>
 
         <!-- Row 1 -->
         <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="10 0 10 0" />

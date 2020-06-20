@@ -96,6 +96,8 @@
     <Compile Include="Repositories\Abstracts\IAccountRepository.cs" />
     <Compile Include="Repositories\Abstracts\IVideoRepository.cs" />
     <Compile Include="Repositories\Abstracts\IVideoRentalRepository.cs" />
+    <Compile Include="Repositories\Abstracts\IReviewsRepository.cs" />
+    <Compile Include="Repositories\Implementations\ReviewsRepository.cs" />
     <Compile Include="Repositories\Implementations\VideoRentalRepository.cs" />
     <Compile Include="Repositories\Implementations\VideoRepository.cs" />
   </ItemGroup>
