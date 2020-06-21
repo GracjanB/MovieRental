@@ -52,13 +52,13 @@
         <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBlock Text="Zmień hasło" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="24"
                        HorizontalAlignment="Center" Margin="0 10 0 0" />
-            <TextBox x:Name="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200"
+            <PasswordBox x:Name="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="200"
                      materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Aktualne hasło" 
                      Margin="20 15 20 0"/>
-            <TextBox x:Name="NewPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200"
+            <PasswordBox x:Name="NewPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="200"
                      materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nowe hasło" 
                      Margin="20 15 20 0"/>
-            <TextBox x:Name="NewPasswordConfirm" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200"
+            <PasswordBox x:Name="NewPasswordConfirm" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="200"
                      materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Potwierdź nowe hasło" 
                      Margin="20 15 20 0"/>
             <Button x:Name="SaveNewPassword" Content="Zapisz" Style="{StaticResource MaterialDesignFlatButton}"

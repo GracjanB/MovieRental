@@ -1,16 +1,7 @@
 ﻿using Caliburn.Micro;
-using DatabaseAccess.Model;
 using MaterialDesignThemes.Wpf;
 using MovieRental.EventModels;
-using MovieRental.Models;
-using MovieRental.Services;
 using MovieRental.User;
-using MovieRental.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MovieRental.ViewModels
@@ -41,7 +32,8 @@ namespace MovieRental.ViewModels
             }
         }
 
-        public MainViewModel(SimpleContainer container, IWindowManager windowManager, IEventAggregator eventAggregator, ILoggedInUser user)
+        public MainViewModel(SimpleContainer container, IWindowManager windowManager, 
+            IEventAggregator eventAggregator, ILoggedInUser user)
         {
             _container = container;
             _windowManager = windowManager;
@@ -155,6 +147,11 @@ namespace MovieRental.ViewModels
         {
             var registerVM = _container.GetInstance<RegisterViewModel>();
             _windowManager.ShowDialog(registerVM);
+        }
+
+        public void AccountDetailsShow()
+        {
+            AccountShow();
         }
 
         public void Logout()

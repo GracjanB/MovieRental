@@ -2,6 +2,7 @@
 using Caliburn.Micro;
 using DatabaseAccess.Entities;
 using DatabaseAccess.Repositories;
+using MovieRental.Helpers;
 using MovieRental.Models;
 using MovieRental.User;
 using MovieRental.Validators;
@@ -58,6 +59,48 @@ namespace MovieRental.ViewModels
                 MessageBox.Show(message);
             }
             else MessageBox.Show("Błąd walidacji danych. Spróbuj ponownie");
+        }
+
+        #endregion
+
+        #region Change Password Form
+
+        public string CurrentPassword { get; set; }
+
+        public string NewPassword { get; set; }
+
+        public string NewPasswordConfirm { get; set; }
+
+        public async Task SaveNewPassword()
+        {
+            var user = await _accountRepo.GetAccount(User.Id);
+            if (Extensions.CalculateHash(CurrentPassword, user.Username) == user.Password)
+            {
+                if (ValidatePassword())
+                {
+                    var result = await _accountRepo.ChangePassword(user.Id, Extensions.CalculateHash(NewPassword, user.Username));
+                    string message = result ? "Pomyślnie zmieniono hasło" : "Wystąpił błąd podczas zmiany hasła.\nSpróbuj ponownie";
+                    MessageBox.Show(message);
+                }
+                else MessageBox.Show("New passwords doesn't match");
+            }
+            else MessageBox.Show("Current password doesn't match");
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+        private bool ValidatePassword()
+        {
+            bool output = false;
+
+            if (NewPassword.Length > 4 && 
+                NewPassword.Length < 24 && 
+                NewPassword == NewPasswordConfirm)
+                output = true;
+
+            return output;
         }
 
         #endregion

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -96,6 +97,27 @@ namespace DatabaseAccess.Repositories
                     existingAccount.LastName = account.LastName;
                     existingAccount.Email = account.Email;
 
+                    await _context.SaveChangesAsync();
+                    output = true;
+                }
+            }
+            catch(Exception) { }
+
+            return output;
+        }
+
+        public async Task<bool> ChangePassword(int accountId, string newPassword)
+        {
+            bool output = false;
+            Account existingAccount = null;
+
+            try
+            {
+                existingAccount = await _context.Accounts.FirstOrDefaultAsync(x => x.Id == accountId);
+
+                if(existingAccount != null)
+                {
+                    existingAccount.Password = newPassword;
                     await _context.SaveChangesAsync();
                     output = true;
                 }

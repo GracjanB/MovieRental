@@ -14,5 +14,7 @@ namespace DatabaseAccess.Repositories
         Task<bool> RechargeBalance(int userId, decimal amount, bool add = true);
 
         Task<bool> Update(Account account);
+
+        Task<bool> ChangePassword(int accountId, string newPassword);
     }
 }
