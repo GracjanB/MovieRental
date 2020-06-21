@@ -20,9 +20,12 @@
     </x:Code>
 
     <Grid>
+        
+        <!-- Top Bar -->
         <DockPanel VerticalAlignment="Top" Height="30" Background="#01579B">
             <materialDesign:PackIcon Kind="Movie" Foreground="White" Height="20" Width="20" VerticalAlignment="Center" Margin="4 0 0 0"/>
-            <TextBlock Text="Odtwarzacz" FontFamily="Champagne &amp; Limousines" Foreground="White" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 2 0 0" Width="120"/>
+            <TextBlock Text="Odtwarzacz" FontFamily="Champagne &amp; Limousines" Foreground="White" FontSize="18" 
+                       HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 2 0 0" Width="120"/>
             <Button x:Name="TryClose" Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="20" HorizontalAlignment="Right" >
                 <materialDesign:PackIcon Kind="WindowClose" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Height="26"/>
             </Button>

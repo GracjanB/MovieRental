@@ -2,9 +2,7 @@ namespace DatabaseAccess.Model
 {
     using DatabaseAccess.Entities;
     using DatabaseAccess.EntitiesConfiguration;
-    using System;
     using System.Data.Entity;
-    using System.Linq;
 
     public class MovieRentalModel : DbContext
     {

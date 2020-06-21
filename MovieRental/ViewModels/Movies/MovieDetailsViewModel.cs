@@ -1,12 +1,6 @@
 ﻿using Caliburn.Micro;
 using MovieRental.Models;
 using MovieRental.ViewModels.Movies;
-using MovieRental.Views.Movies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieRental.ViewModels
 {
@@ -27,6 +21,7 @@ namespace MovieRental.ViewModels
             Movie = movie;
         }
 
+        #region Form Controls
 
         private MovieModel _movie;
 
@@ -49,7 +44,10 @@ namespace MovieRental.ViewModels
 
         public void RentMovie()
         {
-            // TODO
+            var movieRentVM = _container.GetInstance<MovieRentViewModel>();
+            movieRentVM.LoadMovie(Movie);
+            var conductorObject = (MainViewModel)this.Parent;
+            conductorObject.ActivateItem(movieRentVM);
         }
 
         public void MoveBack()
@@ -58,5 +56,7 @@ namespace MovieRental.ViewModels
             var conductorObject = (MainViewModel)this.Parent;
             conductorObject.ActivateItem(moviesVM);
         }
+
+        #endregion
     }
 }

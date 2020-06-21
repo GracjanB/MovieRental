@@ -4,10 +4,6 @@ using DatabaseAccess.Repositories.Implementations;
 using MaterialDesignThemes.Wpf;
 using MovieRental.EventModels;
 using MovieRental.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -31,6 +27,7 @@ namespace MovieRental.ViewModels.Movies
         }
 
         public void SetMovieId(int id) { movieId = id; }
+
 
         #region Form Controls
 

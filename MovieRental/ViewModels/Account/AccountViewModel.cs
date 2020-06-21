@@ -2,11 +2,6 @@
 using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieRental.ViewModels
 {
@@ -20,8 +15,8 @@ namespace MovieRental.ViewModels
 
         private readonly IEventAggregator _events;
 
-        public AccountViewModel(SimpleContainer simpleContainer, ILoggedInUser userService, IWindowManager windowManager,
-            IEventAggregator events)
+        public AccountViewModel(SimpleContainer simpleContainer, ILoggedInUser userService, 
+            IWindowManager windowManager, IEventAggregator events)
         {
             _container = simpleContainer;
             _userService = userService;

@@ -3,10 +3,6 @@ using DatabaseAccess.Repositories;
 using MovieRental.EventModels;
 using MovieRental.User;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MovieRental.ViewModels
@@ -19,7 +15,8 @@ namespace MovieRental.ViewModels
 
         private readonly ILoggedInUser _user;
 
-        public AccountRechargeViewModel(IEventAggregator events, IAccountRepository accountRepo, ILoggedInUser user)
+        public AccountRechargeViewModel(IEventAggregator events, 
+            IAccountRepository accountRepo, ILoggedInUser user)
         {
             _events = events;
             _accountRepo = accountRepo;

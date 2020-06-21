@@ -4,10 +4,6 @@ using DatabaseAccess.Repositories.Implementations;
 using MovieRental.Models;
 using MovieRental.User;
 using MovieRental.ViewModels.Movies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieRental.ViewModels
@@ -24,8 +20,8 @@ namespace MovieRental.ViewModels
 
         private readonly IMapper _mapper;
 
-        public UserMoviesLibraryViewModel(SimpleContainer container, IVideoRentalRepository rentalRepo, IMapper mapper, ILoggedInUser user,
-            IWindowManager windowManager)
+        public UserMoviesLibraryViewModel(SimpleContainer container, IVideoRentalRepository rentalRepo, 
+            IMapper mapper, ILoggedInUser user, IWindowManager windowManager)
         {
             _container = container;
             _windowManager = windowManager;
@@ -87,7 +83,9 @@ namespace MovieRental.ViewModels
 
         public void MakeReview(MovieRentalModel movieRentalModel)
         {
-            // TODO
+            var movieMakeReviewVM = _container.GetInstance<MovieMakeReviewViewModel>();
+            movieMakeReviewVM.SetMovieId(movieRentalModel.Id);
+            _windowManager.ShowDialog(movieMakeReviewVM);
         }
 
         #endregion

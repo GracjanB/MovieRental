@@ -21,12 +21,15 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!-- Row 0 -->
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <TextBlock Text="Wypożyczenie filmu" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="30" Padding="10 10 5 5" />
         </DockPanel>
 
+        <!-- Row 1 -->
         <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="10 0 10 0" />
 
+        <!-- Movie Info Card -->
         <StackPanel Grid.Row="2" Grid.Column="0" Margin="30 10 0 0">
             <materialDesign:Card Width="350" Height="450">
                 <StackPanel>
@@ -55,6 +58,7 @@
             </materialDesign:Card>
         </StackPanel>
 
+        <!-- Rent Form -->
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="30 10 0 0">
             <TextBlock Text="Okres wypożyczenia" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="26" />
             <Separator Style="{StaticResource MaterialDesignDarkSeparator}" Margin="10 0 10 0" />
@@ -74,5 +78,6 @@
                         FontSize="16"/>
             </StackPanel>
         </StackPanel>
+        
     </Grid>
 </UserControl>

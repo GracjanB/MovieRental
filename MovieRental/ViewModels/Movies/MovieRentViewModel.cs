@@ -5,9 +5,6 @@ using DatabaseAccess.Repositories.Implementations;
 using MovieRental.Models;
 using MovieRental.User;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -17,22 +14,16 @@ namespace MovieRental.ViewModels
     {
         private readonly ILoggedInUser _user;
 
-        private readonly IEventAggregator _events;
-
         private readonly IVideoRentalRepository _rentalRepo;
 
         private readonly IAccountRepository _accountRepo;
 
-        private readonly SimpleContainer _container;
-
-        public MovieRentViewModel(ILoggedInUser user, IEventAggregator events, IVideoRentalRepository rentalRepo,
-            SimpleContainer container, IAccountRepository accountRepo)
+        public MovieRentViewModel(ILoggedInUser user, IVideoRentalRepository rentalRepo,
+            IAccountRepository accountRepo)
         {
             _user = user;
-            _events = events;
             _rentalRepo = rentalRepo;
             _accountRepo = accountRepo;
-            _container = container;
         }
 
         public void LoadMovie(MovieModel movie) { Movie = movie; }
@@ -109,11 +100,11 @@ namespace MovieRental.ViewModels
                     AccountId = user.Id
                 };
 
-                var result = await _rentalRepo.AddRental(rental);
-                var result2 = await _accountRepo.RechargeBalance(user.Id, CalculatedCost, false);
+                var addRentalResult = await _rentalRepo.AddRental(rental);
+                var rechargeBalanceResult = await _accountRepo.RechargeBalance(user.Id, CalculatedCost, false);
 
-                if (result && result2)
-                    MessageBox.Show("GOOD");
+                string message = addRentalResult && rechargeBalanceResult ? "Pomyślnie dodano wypożyczenie." : "Wystąpił błąd.\nSpróbuj ponownie";
+                MessageBox.Show(message);
             }
         }
 

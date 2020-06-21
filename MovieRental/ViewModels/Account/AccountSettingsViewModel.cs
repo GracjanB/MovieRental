@@ -6,11 +6,6 @@ using MovieRental.Helpers;
 using MovieRental.Models;
 using MovieRental.User;
 using MovieRental.Validators;
-using Npgsql.TypeHandlers.CompositeHandlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 

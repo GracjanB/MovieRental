@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
-using DatabaseAccess.Entities;
 using DatabaseAccess.Repositories;
 using MovieRental.Models;
 using MovieRental.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 

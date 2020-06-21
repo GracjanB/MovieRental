@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:cal="http://www.caliburnproject.org"
              xmlns:local="clr-namespace:MovieRental.Views"
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="1080" Background="White">
@@ -22,13 +21,26 @@
 
         <!-- Row 0 -->
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
-            <TextBlock Text="{Binding Movie.Title}" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="36" Padding="10" />
-            <materialDesign:RatingBar IsReadOnly="True" VerticalAlignment="Center" Margin="30 5 0 0"/>
-            <Button x:Name="MakeReview" Content="Wystaw opinię" Width="170" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Margin="10 0 0 0"/>
+            
+            <!-- Movie Title -->
+            <TextBlock Text="{Binding Movie.Title}" FontSize="36" Padding="10" 
+                       Style="{StaticResource MaterialDesignHeadline1TextBlock}" />
+            
+            <!-- Movie Rating -->
+            <materialDesign:RatingBar IsReadOnly="True" VerticalAlignment="Center" Margin="30 5 0 0" />
+            
+            <!-- Set Review Button -->
+            <Button x:Name="MakeReview" Content="Wystaw opinię" Width="170" Margin="10 0 0 0"
+                     Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" />
+            
+            <!-- Navigation Buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 0">
-                <Button x:Name="RentMovie" Content="Wypożycz" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" Margin="10 0 10 0" Foreground="#01579B"/>
-                <Button x:Name="MoveBack" Content="Powrót" Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Height="40" Margin="20 0 10 0" Foreground="#01579B"/>
+                <Button x:Name="RentMovie" Content="Wypożycz" Height="40" Foreground="#01579B"
+                        Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Margin="10 0 10 0"/>
+                <Button x:Name="MoveBack" Content="Powrót" Height="40" Foreground="#01579B"
+                        Style="{StaticResource MaterialDesignFlatButton}" FontSize="20" Margin="20 0 10 0"/>
             </StackPanel>
+            
         </DockPanel>
 
         <!-- Row 1 -->
@@ -43,12 +55,18 @@
 
         <!-- Column 1 -->
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 50 0 0">
-            <TextBlock Text="{Binding Movie.Category, StringFormat='Kategoria: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 10 10 10"/>
-            <TextBlock Text="{Binding Movie.ProductionYear, StringFormat='Rok produkcji: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="{Binding Movie.Country, StringFormat='Kraj: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="{Binding Movie.Director, StringFormat='Reżyser: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="{Binding Movie.Scenario, StringFormat='Scenariusz: {0}'}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
-            <TextBlock Text="{Binding Movie.PricePerDay, StringFormat='Cena: {0} zł/dzień'}" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" Margin="50 70 10 10"/>
+            <TextBlock Text="{Binding Movie.Category, StringFormat='Kategoria: {0}'}" 
+                       Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 10 10 10"/>
+            <TextBlock Text="{Binding Movie.ProductionYear, StringFormat='Rok produkcji: {0}'}" 
+                       Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.Country, StringFormat='Kraj: {0}'}" 
+                       Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.Director, StringFormat='Reżyser: {0}'}" 
+                       Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.Scenario, StringFormat='Scenariusz: {0}'}" 
+                       Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Margin="30 0 10 10"/>
+            <TextBlock Text="{Binding Movie.PricePerDay, StringFormat='Cena: {0} zł/dzień'}" 
+                       Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="30" Margin="50 70 10 10"/>
         </StackPanel>
         
     </Grid>

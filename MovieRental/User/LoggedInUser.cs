@@ -6,9 +6,6 @@ using MovieRental.EventModels;
 using MovieRental.Models;
 using MovieRental.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieRental.User
@@ -28,8 +25,8 @@ namespace MovieRental.User
         public bool IsActive { get; set; } = false;
 
 
-        public LoggedInUser(IAuthenticationService authService, IMapper mapper, IEventAggregator eventAggregator,
-            IAccountRepository accountRepo)
+        public LoggedInUser(IAuthenticationService authService, IMapper mapper, 
+            IEventAggregator eventAggregator, IAccountRepository accountRepo)
         {
             _authService = authService;
             _accountRepo = accountRepo;
