@@ -27,7 +27,7 @@ namespace MovieRental.ViewModels
 
         private readonly IEventAggregator _events;
 
-        private readonly ILoggedInUser _userService;
+        private readonly ILoggedInUser _user;
 
         private string _username = "";
 
@@ -41,11 +41,11 @@ namespace MovieRental.ViewModels
             }
         }
 
-        public MainViewModel(SimpleContainer container, IWindowManager windowManager, IEventAggregator eventAggregator, ILoggedInUser userService)
+        public MainViewModel(SimpleContainer container, IWindowManager windowManager, IEventAggregator eventAggregator, ILoggedInUser user)
         {
             _container = container;
             _windowManager = windowManager;
-            _userService = userService;
+            _user = user;
             _events = eventAggregator;
             _events.Subscribe(this);
             MovieRentalLibraryShow();
@@ -59,13 +59,17 @@ namespace MovieRental.ViewModels
 
         public void UserMovieLibraryShow()
         {
-            var userMoviesLibraryVM = _container.GetInstance<UserMoviesLibraryViewModel>();
-            ChangeActiveItem(userMoviesLibraryVM, true);
+            if(_user.IsActive)
+            {
+                var userMoviesLibraryVM = _container.GetInstance<UserMoviesLibraryViewModel>();
+                ChangeActiveItem(userMoviesLibraryVM, true);
+            }
+            else MessageBox.Show("Musisz się zalogować.");
         }
 
         public void AccountShow()
         {
-            if (_userService.IsActive)
+            if (_user.IsActive)
             {
                 var accountVM = _container.GetInstance<AccountViewModel>();
                 ChangeActiveItem(accountVM, true);
@@ -155,7 +159,7 @@ namespace MovieRental.ViewModels
 
         public void Logout()
         {
-            _userService.Logout();
+            _user.Logout();
         }
 
         public void QuitButton()
@@ -198,7 +202,7 @@ namespace MovieRental.ViewModels
 
         public void Handle(UserHasLoggedInEvent userHasLoggedInEvent)
         {
-            Username = _userService.GetUsername();
+            Username = _user.GetUsername();
             SetButtonsVisibility_UserLogin();
 
             string message = "Zalogowano. Witaj " + Username;

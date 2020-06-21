@@ -9,6 +9,70 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="1080" Background="White">
     <Grid>
-        <TextBlock Text="User Movies Library" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="50" Padding="20" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 0 -->
+        <TextBlock Grid.Row="0" Text="Wypożyczenia" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="36" Padding="10 10 5 5" />
+
+        <!-- Row 1 -->
+        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="10 0 10 0" />
+
+        <!-- Row 2 -->
+        <Grid Grid.Row="2" Margin="1">
+            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <StackPanel>
+                    <ItemsControl ItemsSource="{Binding Path=MovieRentals}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <materialDesign:Card Grid.Row="2" HorizontalAlignment="Center" Width="800" Height="130" Margin="0 10 0 10">
+                                    <Grid Margin="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="250" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Column 0 -->
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Text="{Binding Movie.Title}" FontSize="24" Padding="10 5 5 5" 
+                                                       Style="{StaticResource MaterialDesignHeadline3TextBlock}" />
+                                            <materialDesign:RatingBar Margin="10" IsReadOnly="True" Value="{Binding Movie.Rating}"/>
+                                        </StackPanel>
+
+                                        <!-- Column 1 -->
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Text="Ważne do: " />
+                                            <TextBlock FontSize="16" Text="{Binding DateEnd}" Margin="10 0 0 0"
+                                                       Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="18" Text="Koszt: " />
+                                            <TextBlock FontSize="16" Text="{Binding Price, StringFormat=' {0:#,#.##}zł'}" Margin="10 0 0 0"
+                                                       Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                        </StackPanel>
+
+                                        <!-- Column 2 -->
+                                        <StackPanel Grid.Column="2">
+                                            <Button Content="Oglądaj" Style="{StaticResource MaterialDesignFlatButton}" Width="100" 
+                                                    HorizontalAlignment="Center" Margin="0 10 0 0" 
+                                                    cal:Message.Attach="[Event Click] = [Action PlayVideo]" />
+                                            <Button Content="Opis filmu" Style="{StaticResource MaterialDesignFlatButton}" Width="100" 
+                                                    HorizontalAlignment="Center" Margin="0 5 0 0" 
+                                                    cal:Message.Attach="[Event Click] = [Action MovieDetails($dataContext)]"/>
+                                            <Button Content="Wystaw recencję" Style="{StaticResource MaterialDesignFlatButton}" Width="150" 
+                                                    HorizontalAlignment="Center" Margin="0 5 0 0" 
+                                                    cal:Message.Attach="[Event Click] = [Action MakeReview($dataContext)]"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        
     </Grid>
 </UserControl>
