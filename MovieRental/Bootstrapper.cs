@@ -41,6 +41,7 @@ namespace MovieRental
                 config.CreateMap<Account, UserModel>();
                 config.CreateMap<Video, MovieModel>();
                 config.CreateMap<VideoRental, MovieRentalModel>();
+                config.CreateMap<UserModel, Account>();
             });
 
             _container

@@ -142,6 +142,7 @@
     <Compile Include="Services\RegisterService.cs" />
     <Compile Include="User\ILoggedInUser.cs" />
     <Compile Include="User\LoggedInUser.cs" />
+    <Compile Include="Validators\AccountFormValidator.cs" />
     <Compile Include="Validators\RegisterFormValidator.cs" />
     <Compile Include="ViewModels\Account\AccountLibraryViewModel.cs" />
     <Compile Include="ViewModels\Account\AccountRechargeViewModel.cs" />

@@ -12,5 +12,7 @@ namespace DatabaseAccess.Repositories
         Task<Account> GetAccount(string username);
 
         Task<bool> RechargeBalance(int userId, decimal amount, bool add = true);
+
+        Task<bool> Update(Account account);
     }
 }

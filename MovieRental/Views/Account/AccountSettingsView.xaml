@@ -9,6 +9,60 @@
              mc:Ignorable="d" 
              d:DesignHeight="490" d:DesignWidth="750" Background="White">
     <Grid>
-        <TextBlock Text="Account Settings" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="30" Padding="10" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0 -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                   Text="Ustawienia konta" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="30"
+                   Padding="10 10 5 5" />
+
+        <!-- Row 1 -->
+        <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                   Style="{StaticResource MaterialDesignDarkSeparator}" Margin="10 0 10 0" />
+        
+        <!-- Column 0 -->
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="Dane konta" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="24"
+                       HorizontalAlignment="Center" Margin="0 10 0 0" />
+            <TextBox Text="{Binding User.Username, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                     materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nazwa użytkownika" 
+                     Margin="20 15 20 0" Width="200" />
+            <TextBox Text="{Binding User.FirstName, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                     materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Imię" 
+                     Margin="20 20 20 0" Width="200" />
+            <TextBox Text="{Binding User.LastName, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                     materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nazwisko" 
+                     Margin="20 20 20 0" Width="200" />
+            <TextBox Text="{Binding User.Email, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                     materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Email" 
+                     Margin="20 20 20 0" Width="200"/>
+            <Button x:Name="SaveAccountData" Content="Zapisz" Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="130" Margin="0 20 0 0" FontSize="18"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock Text="Zmień hasło" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="24"
+                       HorizontalAlignment="Center" Margin="0 10 0 0" />
+            <TextBox x:Name="CurrentPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200"
+                     materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Aktualne hasło" 
+                     Margin="20 15 20 0"/>
+            <TextBox x:Name="NewPassword" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200"
+                     materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nowe hasło" 
+                     Margin="20 15 20 0"/>
+            <TextBox x:Name="NewPasswordConfirm" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200"
+                     materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Potwierdź nowe hasło" 
+                     Margin="20 15 20 0"/>
+            <Button x:Name="SaveNewPassword" Content="Zapisz" Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="150" Margin="0 20 0 0" FontSize="18"/>
+        </StackPanel>
     </Grid>
 </UserControl>

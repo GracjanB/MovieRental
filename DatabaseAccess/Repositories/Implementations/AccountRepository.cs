@@ -79,5 +79,30 @@ namespace DatabaseAccess.Repositories
             }
             catch(Exception) { return false; }
         }
+
+        public async Task<bool> Update(Account account)
+        {
+            bool output = false;
+            Account existingAccount = null;
+
+            try
+            {
+                existingAccount = await _context.Accounts.FirstOrDefaultAsync(x => x.Id == account.Id);
+                
+                if(existingAccount != null)
+                {
+                    existingAccount.Username = account.Username;
+                    existingAccount.FirstName = account.FirstName;
+                    existingAccount.LastName = account.LastName;
+                    existingAccount.Email = account.Email;
+
+                    await _context.SaveChangesAsync();
+                    output = true;
+                }
+            }
+            catch(Exception) { }
+
+            return output;
+        }
     }
 }
