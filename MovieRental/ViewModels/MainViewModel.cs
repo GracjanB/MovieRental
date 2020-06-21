@@ -48,6 +48,7 @@ namespace MovieRental.ViewModels
             _userService = userService;
             _events = eventAggregator;
             _events.Subscribe(this);
+            MovieRentalLibraryShow();
         }
 
         public void MovieRentalLibraryShow()

@@ -28,6 +28,7 @@ namespace MovieRental.ViewModels
             _windowManager = windowManager;
             _events = events;
             _events.Subscribe(this);
+            UserLibraryShow();
         }
 
         protected override void OnViewLoaded(object view)
